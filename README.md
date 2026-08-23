@@ -41,14 +41,6 @@ da solo.
 
 ### 1. Riempire `config.js` ← **SI RIPARTE DA QUI**
 
-Nel progetto Vercel: **Settings → Domains → Add**, scrivi `oltre-festival.com`
-e conferma.
-
-I nameserver puntano già a Vercel. Se il dominio risulta ancora non pronto,
-la propagazione DNS non è finita: riprova più tardi, senza cambiare nulla.
-
-### 3. Riempire `config.js`
-
 Nessuno di questi campi è ancora compilato:
 
 | Cosa | Dove | Stato |
