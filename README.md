@@ -21,6 +21,8 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 - Progetto Vercel collegato al repository: ogni modifica salvata su GitHub
   si ripubblica da sola in circa un minuto
 - **Dominio collegato e attivo**
+- **Pixel Meta attivo e verificato** (ID `1718452102773040`): PageView e
+  IntenzioneIscrizione partono davvero
 
 ### 🌐 Il sito è online
 
