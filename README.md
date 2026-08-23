@@ -18,35 +18,21 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 
 - Sito convertito da file di design a sito vero, testato su desktop e mobile
 - Codice su GitHub: **https://github.com/EmanueleTravaini8/oltre-festival**
+- **Sito online: https://oltre-festival.vercel.app**
 - Bottoni Eventbrite e pixel Meta pronti, in attesa solo dei codici
 
 ## ⏳ Da fare, in quest'ordine
 
-### 1. Collegare Vercel al repository ← **SI RIPARTE DA QUI**
+### 1. Collegare il dominio `oltre-festival.com` ← **SI RIPARTE DA QUI**
 
-Va fatto dalla dashboard: il collegamento automatico è stato rifiutato con un
-errore di permessi (403), il token non può creare progetti sull'account.
+Nel progetto su Vercel: **Settings → Domains → Add**, scrivi
+`oltre-festival.com` e conferma.
 
-Dal browser, circa 5 minuti:
+I nameserver puntano già a Vercel. Se il dominio risulta ancora non pronto,
+significa che la propagazione DNS non è finita: riprova più tardi, senza
+cambiare nulla.
 
-1. Vai su **https://vercel.com/new**
-2. Nella lista dei repository cerca **`oltre-festival`** e clicca **Import**
-   - Se il repository non compare, clicca **Adjust GitHub App Permissions**
-     e dai a Vercel l'accesso al repository `oltre-festival`
-3. **Non toccare nessuna impostazione di build.** È un sito statico: Framework
-   Preset deve restare su **Other**, e i campi Build Command / Output Directory
-   vanno lasciati vuoti
-4. Clicca **Deploy** e aspetta circa un minuto
-
-Fatto questo il sito è online e, cosa importante, **resta collegato a GitHub**:
-da quel momento ogni modifica salvata su GitHub si ripubblica da sola.
-
-**Come verificare che il collegamento ci sia davvero:** nel progetto su Vercel
-apri **Settings → Git**. Deve mostrare `EmanueleTravaini8/oltre-festival`. Se
-quella schermata è vuota, il progetto non è collegato e le modifiche non si
-pubblicheranno da sole.
-
-### 2. Collegare il dominio `oltre-festival.com`
+### 2. Riempire `config.js`
 
 Nel progetto Vercel: **Settings → Domains → Add**, scrivi `oltre-festival.com`
 e conferma.
