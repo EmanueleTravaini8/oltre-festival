@@ -26,11 +26,16 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 ### 1. Collegare il dominio `oltre-festival.com` ← **SI RIPARTE DA QUI**
 
 Nel progetto su Vercel: **Settings → Domains → Add**, scrivi
-`oltre-festival.com` e conferma.
+`oltre-festival.com` e conferma. Se propone anche `www.oltre-festival.com`
+con redirect, si può accettare.
 
-I nameserver puntano già a Vercel. Se il dominio risulta ancora non pronto,
-significa che la propagazione DNS non è finita: riprova più tardi, senza
-cambiare nulla.
+**Il DNS è già pronto** (verificato il 23 agosto 2026): i nameserver sono già
+`ns1.vercel-dns.com` / `ns2.vercel-dns.com` e i record A puntano agli IP di
+Vercel. Al momento il dominio risponde `404`, che è esattamente lo stato
+"dominio non ancora associato a un progetto".
+
+Quindi non c'è nessuna attesa: appena lo aggiungi il sito compare subito, e
+non verrà chiesto di modificare nessun DNS.
 
 ### 2. Riempire `config.js`
 
