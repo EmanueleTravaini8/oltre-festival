@@ -18,26 +18,28 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 
 - Sito convertito da file di design a sito vero, testato su desktop e mobile
 - Codice su GitHub: **https://github.com/EmanueleTravaini8/oltre-festival**
-- **Sito online: https://oltre-festival.vercel.app**
-- Bottoni Eventbrite e pixel Meta pronti, in attesa solo dei codici
+- Progetto Vercel collegato al repository: ogni modifica salvata su GitHub
+  si ripubblica da sola in circa un minuto
+- **Dominio collegato e attivo**
+
+### 🌐 Il sito è online
+
+**https://www.oltre-festival.com**
+
+Indirizzi che funzionano, tutti verificati il 23 agosto 2026:
+
+| Indirizzo | Cosa fa |
+|---|---|
+| `www.oltre-festival.com` | il sito (indirizzo principale) |
+| `oltre-festival.com` | reindirizza a `www` |
+| `oltre-festival.vercel.app` | indirizzo tecnico di Vercel, sempre valido |
+
+Il certificato di sicurezza (HTTPS) è attivo su entrambi i domini e si rinnova
+da solo.
 
 ## ⏳ Da fare, in quest'ordine
 
-### 1. Collegare il dominio `oltre-festival.com` ← **SI RIPARTE DA QUI**
-
-Nel progetto su Vercel: **Settings → Domains → Add**, scrivi
-`oltre-festival.com` e conferma. Se propone anche `www.oltre-festival.com`
-con redirect, si può accettare.
-
-**Il DNS è già pronto** (verificato il 23 agosto 2026): i nameserver sono già
-`ns1.vercel-dns.com` / `ns2.vercel-dns.com` e i record A puntano agli IP di
-Vercel. Al momento il dominio risponde `404`, che è esattamente lo stato
-"dominio non ancora associato a un progetto".
-
-Quindi non c'è nessuna attesa: appena lo aggiungi il sito compare subito, e
-non verrà chiesto di modificare nessun DNS.
-
-### 2. Riempire `config.js`
+### 1. Riempire `config.js` ← **SI RIPARTE DA QUI**
 
 Nel progetto Vercel: **Settings → Domains → Add**, scrivi `oltre-festival.com`
 e conferma.
@@ -65,7 +67,7 @@ semplicemente non aprono ancora nulla, e non compaiono errori.
 
 Le istruzioni sono più sotto, ai punti 2 e 4 di questa guida.
 
-### 4. Sistemare due segnaposto nei testi
+### 2. Sistemare due segnaposto nei testi
 
 Nel piè di pagina di `index.html` (vedi punto 5 di questa guida):
 
