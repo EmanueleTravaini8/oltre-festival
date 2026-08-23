@@ -29,7 +29,7 @@ window.OLTRE_CONFIG = {
      Dove si trova: Meta Business Manager > Gestione eventi > Origini dati.
      E' un numero lungo di circa 15 cifre. Vedi README.md.
      ------------------------------------------------------------------------- */
-  metaPixelId: '',
+  metaPixelId: '1718452102773040',
 
 
   /* -------------------------------------------------------------------------
