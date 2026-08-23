@@ -41,11 +41,11 @@ da solo.
 
 ### 1. Riempire `config.js` ← **SI RIPARTE DA QUI**
 
-Nessuno di questi campi è ancora compilato:
+Il pixel è a posto. Mancano i 7 codici Eventbrite:
 
 | Cosa | Dove | Stato |
 |---|---|---|
-| ID del pixel Meta | `metaPixelId` | ⬜ vuoto |
+| ID del pixel Meta | `metaPixelId` | ✅ attivo (`1718452102773040`) |
 | Sabato 15:30 — Di cosa sei fatto | `eb-sab-1530` | ⬜ vuoto |
 | Sabato 17:30 — Sentire nel buio | `eb-sab-1730` | ⬜ vuoto |
 | Domenica 10:00 — Il corpo sa di cosa ha bisogno | `eb-dom-1000` | ⬜ vuoto |
