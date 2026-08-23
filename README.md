@@ -7,6 +7,84 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 
 ---
 
+# 📍 STATO DEL PROGETTO
+
+**Ultimo aggiornamento: 23 agosto 2026**
+
+> Questa sezione va aggiornata a ogni passo avanti, così si sa sempre a che
+> punto siamo senza doversi ricordare nulla.
+
+## ✅ Fatto
+
+- Sito convertito da file di design a sito vero, testato su desktop e mobile
+- Codice su GitHub: **https://github.com/EmanueleTravaini8/oltre-festival**
+- Bottoni Eventbrite e pixel Meta pronti, in attesa solo dei codici
+
+## ⏳ Da fare, in quest'ordine
+
+### 1. Collegare Vercel al repository ← **SI RIPARTE DA QUI**
+
+Va fatto dalla dashboard: il collegamento automatico è stato rifiutato con un
+errore di permessi (403), il token non può creare progetti sull'account.
+
+Dal browser, circa 5 minuti:
+
+1. Vai su **https://vercel.com/new**
+2. Nella lista dei repository cerca **`oltre-festival`** e clicca **Import**
+   - Se il repository non compare, clicca **Adjust GitHub App Permissions**
+     e dai a Vercel l'accesso al repository `oltre-festival`
+3. **Non toccare nessuna impostazione di build.** È un sito statico: Framework
+   Preset deve restare su **Other**, e i campi Build Command / Output Directory
+   vanno lasciati vuoti
+4. Clicca **Deploy** e aspetta circa un minuto
+
+Fatto questo il sito è online e, cosa importante, **resta collegato a GitHub**:
+da quel momento ogni modifica salvata su GitHub si ripubblica da sola.
+
+**Come verificare che il collegamento ci sia davvero:** nel progetto su Vercel
+apri **Settings → Git**. Deve mostrare `EmanueleTravaini8/oltre-festival`. Se
+quella schermata è vuota, il progetto non è collegato e le modifiche non si
+pubblicheranno da sole.
+
+### 2. Collegare il dominio `oltre-festival.com`
+
+Nel progetto Vercel: **Settings → Domains → Add**, scrivi `oltre-festival.com`
+e conferma.
+
+I nameserver puntano già a Vercel. Se il dominio risulta ancora non pronto,
+la propagazione DNS non è finita: riprova più tardi, senza cambiare nulla.
+
+### 3. Riempire `config.js`
+
+Nessuno di questi campi è ancora compilato:
+
+| Cosa | Dove | Stato |
+|---|---|---|
+| ID del pixel Meta | `metaPixelId` | ⬜ vuoto |
+| Sabato 15:30 — Di cosa sei fatto | `eb-sab-1530` | ⬜ vuoto |
+| Sabato 17:30 — Sentire nel buio | `eb-sab-1730` | ⬜ vuoto |
+| Domenica 10:00 — Il corpo sa di cosa ha bisogno | `eb-dom-1000` | ⬜ vuoto |
+| Domenica 11:45 — Leggere il corpo | `eb-dom-1145` | ⬜ vuoto |
+| Domenica 15:00 — Workshop a sorpresa | `eb-dom-1500` | ⬜ vuoto |
+| Domenica 17:15 — Quando la forma cede | `eb-dom-1715` | ⬜ vuoto |
+| Domenica 18:30 — Il corpo che integra | `eb-dom-1830` | ⬜ vuoto |
+
+Finché restano vuoti il sito funziona regolarmente: i bottoni "Prenotati"
+semplicemente non aprono ancora nulla, e non compaiono errori.
+
+Le istruzioni sono più sotto, ai punti 2 e 4 di questa guida.
+
+### 4. Sistemare due segnaposto nei testi
+
+Nel piè di pagina di `index.html` (vedi punto 5 di questa guida):
+
+- l'email è ancora `ciao@example.com`
+- il link Instagram punta a `instagram.com/` senza nome profilo
+
+---
+
+# GUIDA
+
 ## In due parole: come funziona
 
 C'è un file, **`config.js`**, che contiene le uniche cose che cambiano nel tempo:
