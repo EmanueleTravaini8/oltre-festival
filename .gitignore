@@ -1,0 +1,42 @@
+# =====================================================================
+#  File di sistema macOS / Windows
+# =====================================================================
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+
+# =====================================================================
+#  Strumenti locali
+# =====================================================================
+.claude/
+.vercel/
+
+# =====================================================================
+#  Protezione: in questa cartella Google Drive sincronizza anche gli
+#  export del progetto grafico (archivi .zip e cartelle da centinaia di
+#  MB). Non devono MAI finire nel repository: GitHub rifiuta i file
+#  oltre i 100 MB e il sito diventerebbe pesantissimo da scaricare.
+#
+#  Per questo si ignora tutto per impostazione predefinita e si
+#  riammettono solo, uno per uno, i file che compongono il sito.
+#  Se in futuro aggiungi un file nuovo al sito, ricordati di
+#  elencarlo qui sotto con il punto esclamativo davanti.
+# =====================================================================
+*
+
+# --- i file del sito ---
+!.gitignore
+!index.html
+!config.js
+!README.md
+
+!fonts/
+!fonts/**
+
+!img/
+!img/**

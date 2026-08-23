@@ -1,0 +1,11 @@
+/* Satoshi — caricato da file .woff2 separati (non incorporati in base64). */
+
+@font-face{font-family:'Satoshi';font-weight:400;font-style:normal;font-display:swap;src:url('Satoshi-Regular.woff2') format('woff2');}
+@font-face{font-family:'Satoshi';font-weight:500;font-style:normal;font-display:swap;src:url('Satoshi-Medium.woff2') format('woff2');}
+@font-face{font-family:'Satoshi';font-weight:700;font-style:normal;font-display:swap;src:url('Satoshi-Bold.woff2') format('woff2');}
+@font-face{font-family:'Satoshi';font-weight:900;font-style:normal;font-display:swap;src:url('Satoshi-Black.woff2') format('woff2');}
+
+/* Alias usati dal markup della pagina (es. font-family:'Satoshi Bold'). */
+@font-face{font-family:'Satoshi Black';font-weight:400;font-style:normal;font-display:swap;src:url('Satoshi-Black.woff2') format('woff2');}
+@font-face{font-family:'Satoshi Bold';font-weight:400;font-style:normal;font-display:swap;src:url('Satoshi-Bold.woff2') format('woff2');}
+@font-face{font-family:'Satoshi Medium';font-weight:400;font-style:normal;font-display:swap;src:url('Satoshi-Medium.woff2') format('woff2');}
