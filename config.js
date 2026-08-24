@@ -65,7 +65,7 @@ window.OLTRE_CONFIG = {
      semplicemente non apre ancora nulla.
      ------------------------------------------------------------------------- */
   eventi: {
-    'eb-sab-1530': '',  // Sabato 15:30 — Workshop sul movimento: di cosa sei fatto?
+    'eb-sab-1530': '1998688465002',  // Sabato 15:30 — Workshop sul movimento: di cosa sei fatto?
     'eb-sab-1730': '',  // Sabato 17:30 — Workshop sulla consapevolezza: sentire nel buio
     'eb-dom-1000': '',  // Domenica 10:00 — Yoga: Il corpo sa di cosa ha bisogno
     'eb-dom-1145': '',  // Domenica 11:45 — Auto-osservazione: Leggere il corpo
