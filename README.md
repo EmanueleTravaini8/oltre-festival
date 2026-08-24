@@ -21,6 +21,7 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 - Progetto Vercel collegato al repository: ogni modifica salvata su GitHub
   si ripubblica da sola in circa un minuto
 - **Dominio collegato e attivo**
+- **Contatti nel piè di pagina** (email e Instagram) compilati
 - **Pixel Meta attivo e verificato** (ID `1718452102773040`): PageView e
   IntenzioneIscrizione partono davvero
 
@@ -61,12 +62,6 @@ semplicemente non aprono ancora nulla, e non compaiono errori.
 
 Le istruzioni sono più sotto, ai punti 2 e 4 di questa guida.
 
-### 2. Sistemare due segnaposto nei testi
-
-Nel piè di pagina di `index.html` (vedi punto 5 di questa guida):
-
-- l'email è ancora `ciao@example.com`
-- il link Instagram punta a `instagram.com/` senza nome profilo
 
 ---
 
@@ -240,15 +235,17 @@ virgolette di `content=""`.
 
 ---
 
-## 5. Cose ancora da sistemare nei testi
+## 5. I contatti nel piè di pagina
 
-Nel sito ci sono due segnaposto rimasti dal file di partenza. Stanno in
-`index.html`, in fondo, nel piè di pagina:
+Sono gia' compilati:
 
-- **Email**: `mailto:ciao@example.com`, con la scritta `[email]`.
-  Va sostituita con l'indirizzo vero.
-- **Instagram**: il link punta a `https://instagram.com/` senza nome profilo.
-  Va completato, es. `https://instagram.com/oltre.festival`.
+- **Email**: `oltre_festival@outlook.it`
+- **Instagram**: `https://www.instagram.com/oltre_festival/`
+  (si apre in una scheda nuova, cosi' chi guarda non perde il sito)
+
+Se un giorno cambiano, stanno in `index.html`, in fondo, nel piè di pagina.
+L'email compare **due volte** sulla stessa riga: dentro `mailto:` e come
+testo visibile. Vanno cambiate entrambe.
 
 ---
 
