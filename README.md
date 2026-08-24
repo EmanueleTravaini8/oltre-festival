@@ -9,7 +9,7 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 
 # 📍 STATO DEL PROGETTO
 
-**Ultimo aggiornamento: 23 agosto 2026**
+**Ultimo aggiornamento: 24 agosto 2026**
 
 > Questa sezione va aggiornata a ogni passo avanti, così si sa sempre a che
 > punto siamo senza doversi ricordare nulla.
