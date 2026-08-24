@@ -43,12 +43,13 @@ da solo.
 
 ### 1. Riempire `config.js` ← **SI RIPARTE DA QUI**
 
-Il pixel è a posto. Mancano i 7 codici Eventbrite:
+Il pixel è a posto e il primo workshop è collegato e testato.
+Mancano i 6 codici Eventbrite rimanenti:
 
 | Cosa | Dove | Stato |
 |---|---|---|
 | ID del pixel Meta | `metaPixelId` | ✅ attivo (`1718452102773040`) |
-| Sabato 15:30 — Di cosa sei fatto | `eb-sab-1530` | ⬜ vuoto |
+| Sabato 15:30 — Di cosa sei fatto | `eb-sab-1530` | ✅ `1998688465002` |
 | Sabato 17:30 — Sentire nel buio | `eb-sab-1730` | ⬜ vuoto |
 | Domenica 10:00 — Il corpo sa di cosa ha bisogno | `eb-dom-1000` | ⬜ vuoto |
 | Domenica 11:45 — Leggere il corpo | `eb-dom-1145` | ⬜ vuoto |
