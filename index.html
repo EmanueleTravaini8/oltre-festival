@@ -458,7 +458,14 @@
           widgetType: 'checkout',
           eventId: eventId,
           modal: true,
-          modalTriggerElementId: id
+          modalTriggerElementId: id,
+          // colori del brand OLTRE, per non passare dal sito a una
+          // finestra di iscrizione che sembra di un altro progetto
+          themeSettings: {
+            brandColor: '#7D6074',
+            fontColor: '#2B2A26',
+            background: '#FFFFFF'
+          }
         });
         conModale[id] = true;
       } catch (err) {
