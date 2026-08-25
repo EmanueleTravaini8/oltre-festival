@@ -420,9 +420,14 @@
     btn.setAttribute('rel', 'noopener');
   });
 
+  // Punto della pagina in cui si stava leggendo quando si e' premuto il tasto.
+  var posizioneSalvata = null;
+
   // --- 3. Tracciamento + blocco della navigazione quando il modale c'e' ----
   perOgniBottone(function (btn, id) {
     btn.addEventListener('click', function (e) {
+      posizioneSalvata = window.scrollY;
+
       if (pixelOn && typeof window.fbq === 'function') {
         window.fbq('trackCustom', 'IntenzioneIscrizione', { blocco: id });
       }
@@ -431,6 +436,44 @@
       if (conModale[id]) e.preventDefault();
     });
   });
+
+  // --- 3b. Non perdere il punto di lettura quando si apre la finestra ------
+  // Aprendo il checkout, Eventbrite blocca lo scorrimento scrivendo
+  // overflow:hidden sul body. In diversi browser quel blocco fa risalire
+  // la pagina in cima, cosi' chiudendo la finestra ci si ritrova
+  // all'inizio invece che sul workshop che si stava guardando.
+  // Qui la posizione viene rimessa a posto se cambia da sola.
+  (function () {
+    function tornaAlPunto() {
+      if (posizioneSalvata === null) return;
+      if (Math.abs(window.scrollY - posizioneSalvata) < 3) return;  // non si e' mosso: niente da fare
+      try {
+        window.scrollTo({ top: posizioneSalvata, behavior: 'instant' });
+      } catch (err) {
+        window.scrollTo(0, posizioneSalvata);   // browser piu' vecchi
+      }
+    }
+
+    if (typeof MutationObserver !== 'function') return;
+
+    var bloccato = false;
+    new MutationObserver(function () {
+      var oraBloccato = document.body.style.overflow === 'hidden';
+
+      if (oraBloccato && !bloccato) {
+        bloccato = true;
+        // il caricamento del checkout dura un attimo: si ricontrolla
+        // per circa un secondo, poi si smette per non dare fastidio
+        [0, 50, 100, 200, 350, 550, 800, 1100].forEach(function (ms) {
+          setTimeout(tornaAlPunto, ms);
+        });
+      } else if (!oraBloccato && bloccato) {
+        bloccato = false;             // finestra chiusa
+        tornaAlPunto();
+        posizioneSalvata = null;
+      }
+    }).observe(document.body, { attributes: true, attributeFilter: ['style'] });
+  })();
 
   // --- 4. Aggancio del widget modale ---------------------------------------
   function inizializza() {
