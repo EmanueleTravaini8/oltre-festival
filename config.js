@@ -8,7 +8,7 @@
    Regole da rispettare, sono poche ma importanti:
      - il testo va SEMPRE fra gli apici singoli:  '1234567890'
      - non togliere le virgole a fine riga
-     - non cambiare i nomi a sinistra dei due punti (es. 'eb-sab-1530')
+     - non cambiare i nomi a sinistra dei due punti (es. 'eb-sab-1500')
 
    Se qualcosa si rompe, il sito non si blocca: i bottoni tornano
    semplicemente a essere link normali.
@@ -40,7 +40,7 @@ window.OLTRE_CONFIG = {
      la scritta "Posti esauriti", in grigio e non cliccabile.
 
      Esempio con due workshop pieni:
-         esauriti: ['eb-dom-1030', 'eb-dom-1830'],
+         esauriti: ['eb-dom-1000', 'eb-dom-1830'],
 
      Per riaprire le iscrizioni basta togliere il codice da questa lista.
      Lasciala cosi' com'e' finche' non serve.
@@ -65,9 +65,9 @@ window.OLTRE_CONFIG = {
      semplicemente non apre ancora nulla.
      ------------------------------------------------------------------------- */
   eventi: {
-    'eb-sab-1530': '1998688465002',  // Sabato 15:30 — Movimento: di cosa sei fatto?
+    'eb-sab-1500': '1998688465002',  // Sabato 15:00 — Movimento: di cosa sei fatto?
     'eb-sab-1700': '1998778240523',  // Sabato 17:00 — Consapevolezza: sentire nel buio
-    'eb-dom-1030': '',  // Domenica 10:30 — Yoga: Il corpo sa di cosa ha bisogno
+    'eb-dom-1000': '',  // Domenica 10:00 — Yoga: Il corpo sa di cosa ha bisogno
     'eb-dom-1200': '',  // Domenica 12:00 — Meditazione somatica: Il corpo che integra
     'eb-dom-1500': '',  // Domenica 15:00-18:00 — Leggere il corpo (blocco unico, con guest)
     'eb-dom-1830': ''   // Domenica 18:30 — Quando la forma cede

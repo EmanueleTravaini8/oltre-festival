@@ -51,9 +51,9 @@ Pixel attivo e sabato completo. Mancano i 4 workshop della domenica:
 | Cosa | Dove | Stato |
 |---|---|---|
 | ID del pixel Meta | `metaPixelId` | ✅ attivo (`1718452102773040`) |
-| Sabato 15:30 — Di cosa sei fatto | `eb-sab-1530` | ✅ `1998688465002` |
+| Sabato 15:00 — Di cosa sei fatto | `eb-sab-1500` | ✅ `1998688465002` |
 | Sabato 17:00 — Sentire nel buio | `eb-sab-1700` | ✅ `1998778240523` |
-| Domenica 10:30 — Il corpo sa di cosa ha bisogno | `eb-dom-1030` | ⬜ vuoto |
+| Domenica 10:00 — Il corpo sa di cosa ha bisogno | `eb-dom-1000` | ⬜ vuoto |
 | Domenica 12:00 — Il corpo che integra | `eb-dom-1200` | ⬜ vuoto |
 | Domenica 15:00–18:00 — Leggere il corpo (con guest) | `eb-dom-1500` | ⬜ vuoto |
 | Domenica 18:30 — Quando la forma cede | `eb-dom-1830` | ⬜ vuoto |
@@ -91,7 +91,7 @@ Questa è la procedura che userai ogni volta. Vale per qualsiasi modifica.
 3. Modifica quello che ti serve. Le regole sono tre:
    - il testo va **sempre fra apici singoli**: `'1234567890'`
    - **non togliere le virgole** a fine riga
-   - **non cambiare i nomi** a sinistra dei due punti (es. `'eb-sab-1530'`)
+   - **non cambiare i nomi** a sinistra dei due punti (es. `'eb-sab-1500'`)
 4. Scorri in fondo alla pagina e clicca il bottone verde **Commit changes**.
 5. Si apre una finestrella: puoi lasciare tutto com'è e cliccare di nuovo
    **Commit changes**.
@@ -129,7 +129,7 @@ Le righe sono già commentate con giorno, ora e titolo, così non sbagli:
 
 ```js
 eventi: {
-  'eb-sab-1530': '1234567890',  // Sabato 15:30 — Workshop sul movimento: di cosa sei fatto?
+  'eb-sab-1500': '1234567890',  // Sabato 15:30 — Workshop sul movimento: di cosa sei fatto?
   'eb-sab-1700': '',            // Sabato 17:00 — Workshop sulla consapevolezza: sentire nel buio
   ...
 }
@@ -156,8 +156,8 @@ errori**. Puoi riempire i codici uno alla volta, man mano che crei gli eventi.
 Quando un workshop si riempie, non serve toccare la grafica: basta aggiungere il
 suo codice alla lista `esauriti` in `config.js`.
 
-I codici sono quelli a sinistra nella sezione `eventi` (`'eb-sab-1530'`,
-`'eb-dom-1030'`, e così via), **non** i numeri di Eventbrite.
+I codici sono quelli a sinistra nella sezione `eventi` (`'eb-sab-1500'`,
+`'eb-dom-1000'`, e così via), **non** i numeri di Eventbrite.
 
 **Lista vuota** — tutti i workshop sono prenotabili (è lo stato di partenza):
 
@@ -168,13 +168,13 @@ esauriti: [],
 **Un workshop pieno:**
 
 ```js
-esauriti: ['eb-dom-1030'],
+esauriti: ['eb-dom-1000'],
 ```
 
 **Più workshop pieni** — separali con la virgola:
 
 ```js
-esauriti: ['eb-dom-1030', 'eb-dom-1830'],
+esauriti: ['eb-dom-1000', 'eb-dom-1830'],
 ```
 
 ### Cosa vede la persona sul sito
@@ -217,7 +217,7 @@ tracciamento**. Nessun errore, nessuna richiesta di rete verso Meta.
 
 - **PageView** — ogni visita alla pagina.
 - **IntenzioneIscrizione** — ogni clic su un bottone "Prenotati". L'evento porta
-  con sé il campo `blocco` con il codice del workshop (es. `eb-dom-1030`), così
+  con sé il campo `blocco` con il codice del workshop (es. `eb-dom-1000`), così
   in Meta puoi vedere quali workshop attirano più clic.
 
 ### Verifica del dominio
