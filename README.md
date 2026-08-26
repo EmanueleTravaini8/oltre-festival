@@ -130,7 +130,7 @@ Le righe sono già commentate con giorno, ora e titolo, così non sbagli:
 ```js
 eventi: {
   'eb-sab-1530': '1234567890',  // Sabato 15:30 — Workshop sul movimento: di cosa sei fatto?
-  'eb-sab-1730': '',            // Sabato 17:30 — Workshop sulla consapevolezza: sentire nel buio
+  'eb-sab-1700': '',            // Sabato 17:00 — Workshop sulla consapevolezza: sentire nel buio
   ...
 }
 ```
