@@ -9,7 +9,7 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
 
 # 📍 STATO DEL PROGETTO
 
-**Ultimo aggiornamento: 25 agosto 2026**
+**Ultimo aggiornamento: 26 agosto 2026**
 
 > Questa sezione va aggiornata a ogni passo avanti, così si sa sempre a che
 > punto siamo senza doversi ricordare nulla.
@@ -52,11 +52,11 @@ Pixel attivo e sabato completo. Mancano i 4 workshop della domenica:
 |---|---|---|
 | ID del pixel Meta | `metaPixelId` | ✅ attivo (`1718452102773040`) |
 | Sabato 15:30 — Di cosa sei fatto | `eb-sab-1530` | ✅ `1998688465002` |
-| Sabato 17:30 — Sentire nel buio | `eb-sab-1730` | ✅ `1998778240523` |
-| Domenica 10:30 — Il corpo sa di cosa ha bisogno | `eb-dom-yoga` | ⬜ vuoto |
-| Domenica 12:15 — Il corpo che integra | `eb-dom-integra` | ⬜ vuoto |
-| Domenica 15:00 — Leggere il corpo (+ workshop a sorpresa) | `eb-dom-leggere` | ⬜ vuoto |
-| Domenica 18:30 — Quando la forma cede | `eb-dom-forma` | ⬜ vuoto |
+| Sabato 17:00 — Sentire nel buio | `eb-sab-1700` | ✅ `1998778240523` |
+| Domenica 10:30 — Il corpo sa di cosa ha bisogno | `eb-dom-1030` | ⬜ vuoto |
+| Domenica 12:00 — Il corpo che integra | `eb-dom-1200` | ⬜ vuoto |
+| Domenica 15:00–18:00 — Leggere il corpo (con guest) | `eb-dom-1500` | ⬜ vuoto |
+| Domenica 18:30 — Quando la forma cede | `eb-dom-1830` | ⬜ vuoto |
 
 Finché restano vuoti il sito funziona regolarmente: i bottoni "Prenotati"
 semplicemente non aprono ancora nulla, e non compaiono errori.
@@ -157,7 +157,7 @@ Quando un workshop si riempie, non serve toccare la grafica: basta aggiungere il
 suo codice alla lista `esauriti` in `config.js`.
 
 I codici sono quelli a sinistra nella sezione `eventi` (`'eb-sab-1530'`,
-`'eb-dom-yoga'`, e così via), **non** i numeri di Eventbrite.
+`'eb-dom-1030'`, e così via), **non** i numeri di Eventbrite.
 
 **Lista vuota** — tutti i workshop sono prenotabili (è lo stato di partenza):
 
@@ -168,13 +168,13 @@ esauriti: [],
 **Un workshop pieno:**
 
 ```js
-esauriti: ['eb-dom-yoga'],
+esauriti: ['eb-dom-1030'],
 ```
 
 **Più workshop pieni** — separali con la virgola:
 
 ```js
-esauriti: ['eb-dom-yoga', 'eb-dom-forma'],
+esauriti: ['eb-dom-1030', 'eb-dom-1830'],
 ```
 
 ### Cosa vede la persona sul sito
@@ -217,7 +217,7 @@ tracciamento**. Nessun errore, nessuna richiesta di rete verso Meta.
 
 - **PageView** — ogni visita alla pagina.
 - **IntenzioneIscrizione** — ogni clic su un bottone "Prenotati". L'evento porta
-  con sé il campo `blocco` con il codice del workshop (es. `eb-dom-yoga`), così
+  con sé il campo `blocco` con il codice del workshop (es. `eb-dom-1030`), così
   in Meta puoi vedere quali workshop attirano più clic.
 
 ### Verifica del dominio

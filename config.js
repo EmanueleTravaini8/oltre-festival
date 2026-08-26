@@ -40,7 +40,7 @@ window.OLTRE_CONFIG = {
      la scritta "Posti esauriti", in grigio e non cliccabile.
 
      Esempio con due workshop pieni:
-         esauriti: ['eb-dom-yoga', 'eb-dom-forma'],
+         esauriti: ['eb-dom-1030', 'eb-dom-1830'],
 
      Per riaprire le iscrizioni basta togliere il codice da questa lista.
      Lasciala cosi' com'e' finche' non serve.
@@ -65,11 +65,11 @@ window.OLTRE_CONFIG = {
      semplicemente non apre ancora nulla.
      ------------------------------------------------------------------------- */
   eventi: {
-    'eb-sab-1530':    '1998688465002',  // Sabato 15:30 — Movimento: di cosa sei fatto?
-    'eb-sab-1730':    '1998778240523',  // Sabato 17:30 — Consapevolezza: sentire nel buio
-    'eb-dom-yoga':    '',  // Domenica 10:30 — Yoga: Il corpo sa di cosa ha bisogno
-    'eb-dom-integra': '',  // Domenica 12:15 — Meditazione somatica: Il corpo che integra
-    'eb-dom-leggere': '',  // Domenica 15:00 — Leggere il corpo (blocco unico col workshop a sorpresa)
-    'eb-dom-forma':   ''   // Domenica 18:30 — Quando la forma cede
+    'eb-sab-1530': '1998688465002',  // Sabato 15:30 — Movimento: di cosa sei fatto?
+    'eb-sab-1700': '1998778240523',  // Sabato 17:00 — Consapevolezza: sentire nel buio
+    'eb-dom-1030': '',  // Domenica 10:30 — Yoga: Il corpo sa di cosa ha bisogno
+    'eb-dom-1200': '',  // Domenica 12:00 — Meditazione somatica: Il corpo che integra
+    'eb-dom-1500': '',  // Domenica 15:00-18:00 — Leggere il corpo (blocco unico, con guest)
+    'eb-dom-1830': ''   // Domenica 18:30 — Quando la forma cede
   }
 };
