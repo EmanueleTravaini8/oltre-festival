@@ -70,6 +70,6 @@ window.OLTRE_CONFIG = {
     'eb-dom-1000': '',  // Domenica 10:00 — Yoga: Il corpo sa di cosa ha bisogno
     'eb-dom-1200': '',  // Domenica 12:00 — Meditazione somatica: Il corpo che integra
     'eb-dom-1500': '',  // Domenica 15:00-18:00 — Leggere il corpo (blocco unico, con guest)
-    'eb-dom-1830': ''   // Domenica 18:30 — Quando la forma cede
+    'eb-dom-1830': '1998903883324'   // Domenica 18:30 — Quando la forma cede
   }
 };
