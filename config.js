@@ -65,7 +65,7 @@ window.OLTRE_CONFIG = {
      semplicemente non apre ancora nulla.
      ------------------------------------------------------------------------- */
   eventi: {
-    'eb-sab-1500': '1998688465002',  // Sabato 15:00 — Movimento: di cosa sei fatto?
+    'eb-sab-1500': '1998890284650',  // Sabato 15:00 — Movimento: di cosa sei fatto?
     'eb-sab-1700': '1998890310728',  // Sabato 17:00 — Consapevolezza: sentire nel buio
     'eb-dom-1000': '',  // Domenica 10:00 — Yoga: Il corpo sa di cosa ha bisogno
     'eb-dom-1200': '',  // Domenica 12:00 — Meditazione somatica: Il corpo che integra
