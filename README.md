@@ -26,6 +26,9 @@ installare niente sul computer: si fa tutto dal sito di GitHub, dal browser.
   e' cambiata parecchio, il sabato no
 - **Pixel Meta attivo e verificato** (ID `1718452102773040`): PageView e
   IntenzioneIscrizione partono davvero
+- **Google Analytics attivo** (ID `G-3KHVF8JBP5`): visita, apertura della
+  finestra di iscrizione e iscrizione completata
+- **Tutti i workshop collegati a Eventbrite**: i sei bottoni aprono la finestra
 
 ### 🌐 Il sito è online
 
@@ -46,22 +49,23 @@ da solo.
 
 ### 1. Riempire `config.js` ← **SI RIPARTE DA QUI**
 
-Pixel attivo e sabato completo. Mancano i 4 workshop della domenica:
+`config.js` è completo. Questo è il contenuto attuale:
 
 | Cosa | Dove | Stato |
 |---|---|---|
-| ID del pixel Meta | `metaPixelId` | ✅ attivo (`1718452102773040`) |
-| Sabato 15:00 — Di cosa sei fatto | `eb-sab-1500` | ✅ `1998688465002` |
-| Sabato 17:00 — Sentire nel buio | `eb-sab-1700` | ✅ `1998778240523` |
-| Domenica 10:00 — Il corpo sa di cosa ha bisogno | `eb-dom-1000` | ⬜ vuoto |
-| Domenica 12:00 — Il corpo che integra | `eb-dom-1200` | ⬜ vuoto |
-| Domenica 15:00–18:00 — Leggere il corpo (con guest) | `eb-dom-1500` | ⬜ vuoto |
-| Domenica 18:30 — Quando la forma cede | `eb-dom-1830` | ⬜ vuoto |
+| ID del pixel Meta | `metaPixelId` | ✅ `1718452102773040` |
+| ID di Google Analytics | `googleAnalyticsId` | ✅ `G-3KHVF8JBP5` |
+| Sabato 15:00 — Di cosa sei fatto | `eb-sab-1500` | ✅ `1998890284650` |
+| Sabato 17:00 — Sentire nel buio | `eb-sab-1700` | ✅ `1998890310728` |
+| Domenica 10:00 — Il corpo sa di cosa ha bisogno | `eb-dom-1000` | ✅ `1998887696910` |
+| Domenica 12:00 — Il corpo che integra | `eb-dom-1200` | ✅ `1998903753937` |
+| Domenica 15:00–18:00 — Leggere il corpo (con guest) | `eb-dom-1500` | ✅ `1998903836183` |
+| Domenica 18:30 — Quando la forma cede | `eb-dom-1830` | ✅ `1998903883324` |
 
-Finché restano vuoti il sito funziona regolarmente: i bottoni "Prenotati"
-semplicemente non aprono ancora nulla, e non compaiono errori.
+Se un codice viene tolto, il sito non si rompe: quel bottone "Prenotati"
+semplicemente non apre più nulla, senza errori.
 
-Le istruzioni sono più sotto, ai punti 2 e 4 di questa guida.
+Le istruzioni sono più sotto, ai punti 2, 4 e 5 di questa guida.
 
 
 ---
@@ -71,7 +75,8 @@ Le istruzioni sono più sotto, ai punti 2 e 4 di questa guida.
 ## In due parole: come funziona
 
 C'è un file, **`config.js`**, che contiene le uniche cose che cambiano nel tempo:
-il codice del pixel di Meta e i codici degli eventi Eventbrite.
+i codici di misurazione (pixel di Meta e Google Analytics) e i codici degli
+eventi Eventbrite.
 
 Ogni volta che salvi una modifica a quel file, **il sito si ripubblica da solo in
 circa un minuto**. Non devi avvisare nessuno e non devi fare altri passaggi.
@@ -236,7 +241,74 @@ virgolette di `content=""`.
 
 ---
 
-## 5. I contatti nel piè di pagina
+## 5. Google Analytics (`googleAnalyticsId`)
+
+Serve a seguire il percorso completo: **quante persone arrivano sul sito →
+quante aprono la finestra di iscrizione → quante la portano a termine**.
+
+### Dove trovare l'ID
+
+1. Vai su **analytics.google.com**.
+2. In basso a sinistra apri **Amministrazione**.
+3. Nella colonna della proprietà clicca **Flussi di dati** e apri il flusso web.
+4. In alto trovi l'**ID misurazione**: comincia per `G-` (es. `G-3KHVF8JBP5`).
+
+Incollalo in `config.js`:
+
+```js
+googleAnalyticsId: 'G-3KHVF8JBP5',
+```
+
+### Se lo lasci vuoto
+
+Come per il pixel: il sito funziona e **non viene caricato nessun codice di
+tracciamento**. Nessuna richiesta verso Google, nessun errore.
+
+### I tre eventi che compongono il percorso
+
+| Evento | Quando parte | Serve a |
+|---|---|---|
+| `page_view` | a ogni visita | contare chi arriva sul sito |
+| `inizio_iscrizione` | al clic su "Prenotati" | contare chi apre la finestra |
+| `iscrizione_completata` | a iscrizione conclusa | contare chi si iscrive davvero |
+
+`page_view` lo conta Google da solo, non serve codice. Gli altri due partono dal
+sito e portano con sé il campo **`workshop`** con il codice del blocco
+(es. `eb-dom-1000`), così puoi vedere quali workshop convertono meglio.
+
+### Cosa va fatto una volta sola dentro Google Analytics
+
+Il codice sul sito è a posto, ma tre cose vanno impostate a mano nel pannello,
+altrimenti i dati arrivano e non si vedono nei report:
+
+1. **Registrare il campo `workshop`** — *Amministrazione → Definizioni
+   personalizzate → Crea dimensione personalizzata*. Nome `workshop`, ambito
+   *Evento*, parametro `workshop`. Senza questo passaggio i numeri totali si
+   vedono, ma non riesci a distinguere un workshop dall'altro.
+2. **Segnare `iscrizione_completata` come evento chiave** —
+   *Amministrazione → Eventi*, interruttore **Contrassegna come evento chiave**.
+   Da lì in poi viene contato come conversione.
+3. **Costruire il funnel** — *Esplora → Esplorazione canalizzazione*, con tre
+   passaggi in quest'ordine: `page_view`, `inizio_iscrizione`,
+   `iscrizione_completata`.
+
+I nuovi eventi compaiono nell'elenco solo **dopo** che sono arrivati almeno una
+volta: fai un clic di prova sul sito, poi guarda in *Report → Tempo reale*.
+
+### Il limite da conoscere
+
+`iscrizione_completata` parte dalla funzione `onOrderComplete` che Eventbrite
+richiama quando l'ordine si chiude **dentro la finestra sul nostro sito**.
+
+Non parte se la persona si iscrive altrove: dalla pagina Eventbrite raggiunta
+per altra via, dall'app, o nel caso raro in cui lo script di Eventbrite non si
+carichi e il bottone funzioni da link normale. Il numero di Analytics quindi
+**sottostima le iscrizioni**: la fonte vera dei conteggi resta Eventbrite.
+Per il rapporto fra i tre passaggi va benissimo lo stesso.
+
+---
+
+## 6. I contatti nel piè di pagina
 
 Sono gia' compilati:
 
@@ -250,7 +322,7 @@ testo visibile. Vanno cambiate entrambe.
 
 ---
 
-## 6. Struttura dei file
+## 7. Struttura dei file
 
 ```
 index.html      la pagina (testi, programma, FAQ) — normalmente non si tocca

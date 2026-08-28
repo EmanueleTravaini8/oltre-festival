@@ -68,6 +68,30 @@
   fbq('track', 'PageView');
 })();
 </script>
+
+<!-- ============================================================
+     GOOGLE ANALYTICS (GA4)
+     Non fa nulla finche' googleAnalyticsId in config.js e' vuoto:
+     niente richieste di rete, niente errori in console.
+     La visita alla pagina (page_view) viene contata da sola.
+     ============================================================ -->
+<script>
+(function () {
+  var cfg  = window.OLTRE_CONFIG || {};
+  var gaId = String(cfg.googleAnalyticsId || '').trim();
+  if (!gaId) return;               // analytics non configurato: si esce in silenzio
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', gaId);
+
+  var t = document.createElement('script');
+  t.async = true;
+  t.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+  document.head.appendChild(t);
+})();
+</script>
 </head>
 <body>
 
@@ -330,6 +354,13 @@
   var eventi   = cfg.eventi || {};
   var esauriti = Array.isArray(cfg.esauriti) ? cfg.esauriti : [];
   var pixelOn  = !!String(cfg.metaPixelId || '').trim();
+  var gaOn     = !!String(cfg.googleAnalyticsId || '').trim();
+
+  // Invio di un evento a Google Analytics. Se GA non c'e', non fa nulla.
+  function tracciaGA(nome, blocco) {
+    if (!gaOn || typeof window.gtag !== 'function') return;
+    window.gtag('event', nome, { workshop: blocco });
+  }
 
   // Da un eventId si ricava l'indirizzo pubblico dell'evento.
   var BASE_URL = 'https://www.eventbrite.it/e/';
@@ -376,6 +407,7 @@
       if (pixelOn && typeof window.fbq === 'function') {
         window.fbq('trackCustom', 'IntenzioneIscrizione', { blocco: id });
       }
+      tracciaGA('inizio_iscrizione', id);
       // Se il modale e' agganciato, si annulla il salto all'href:
       // altrimenti la pagina navigherebbe via mentre si apre la finestra.
       if (conModale[id]) e.preventDefault();
@@ -433,6 +465,16 @@
           eventId: eventId,
           modal: true,
           modalTriggerElementId: id,
+          // Eventbrite chiama questa funzione quando l'iscrizione e'
+          // andata a buon fine dentro la finestra. E' l'unico modo di
+          // sapere che il giro si e' chiuso: il resto avviene su
+          // eventbrite.com, dove il nostro codice non arriva.
+          onOrderComplete: function () {
+            tracciaGA('iscrizione_completata', id);
+            if (pixelOn && typeof window.fbq === 'function') {
+              window.fbq('trackCustom', 'IscrizioneCompletata', { blocco: id });
+            }
+          },
           // colori del brand OLTRE, per non passare dal sito a una
           // finestra di iscrizione che sembra di un altro progetto
           themeSettings: {

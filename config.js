@@ -33,6 +33,19 @@ window.OLTRE_CONFIG = {
 
 
   /* -------------------------------------------------------------------------
+     GOOGLE ANALYTICS
+
+     Serve a vedere quante persone arrivano sul sito, quante aprono la
+     finestra di iscrizione e quante la portano a termine.
+     Come per il pixel: se lo lasci vuoto non viene caricato nulla.
+
+     Dove si trova: Google Analytics > Amministrazione > Flussi di dati.
+     E' un codice che comincia per G- seguito da lettere e numeri.
+     ------------------------------------------------------------------------- */
+  googleAnalyticsId: 'G-3KHVF8JBP5',
+
+
+  /* -------------------------------------------------------------------------
      WORKSHOP CON POSTI ESAURITI
 
      Quando un workshop si riempie, aggiungi qui il suo codice fra apici.
