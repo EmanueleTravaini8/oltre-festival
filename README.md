@@ -60,7 +60,6 @@ da solo.
 | Domenica 10:00 — Il corpo sa di cosa ha bisogno | `eb-dom-1000` | ✅ `1998887696910` |
 | Domenica 12:00 — Il corpo che integra | `eb-dom-1200` | ✅ `1998903753937` |
 | Domenica 15:00–18:00 — Leggere il corpo (con guest) | `eb-dom-1500` | ✅ `1998903836183` |
-| Domenica 18:30 — Quando la forma cede | `eb-dom-1830` | ✅ `1998903883324` |
 
 Se un codice viene tolto, il sito non si rompe: quel bottone "Prenotati"
 semplicemente non apre più nulla, senza errori.
@@ -179,7 +178,7 @@ esauriti: ['eb-dom-1000'],
 **Più workshop pieni** — separali con la virgola:
 
 ```js
-esauriti: ['eb-dom-1000', 'eb-dom-1830'],
+esauriti: ['eb-dom-1000', 'eb-dom-1500'],
 ```
 
 ### Cosa vede la persona sul sito
