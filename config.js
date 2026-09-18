@@ -2,19 +2,18 @@
    OLTRE — IMPOSTAZIONI DEL SITO
 
    Questo e' l'UNICO file che devi modificare.
-   Non serve saper programmare: si tratta solo di incollare dei numeri
+   Non serve saper programmare: si tratta solo di incollare dei valori
    fra gli apici '' che trovi gia' pronti.
 
    Regole da rispettare, sono poche ma importanti:
      - il testo va SEMPRE fra gli apici singoli:  '1234567890'
      - non togliere le virgole a fine riga
-     - non cambiare i nomi a sinistra dei due punti (es. 'eb-sab-1500')
+     - non cambiare i nomi a sinistra dei due punti (es. 'eventoId')
 
-   Se qualcosa si rompe, il sito non si blocca: i bottoni tornano
-   semplicemente a essere link normali.
+   Se qualcosa si rompe, il sito non si blocca: i bottoni "Iscriviti"
+   tornano semplicemente a portare in fondo alla pagina.
 
-   Le istruzioni passo passo, con gli screenshot di dove cliccare,
-   sono nel file README.md.
+   Le istruzioni passo passo sono nel file README.md.
    =========================================================================== */
 
 window.OLTRE_CONFIG = {
@@ -23,11 +22,10 @@ window.OLTRE_CONFIG = {
      PIXEL META (Facebook / Instagram)
 
      Serve a misurare quante persone visitano il sito e quante cliccano
-     "Prenotati". Se lo lasci vuoto il sito funziona lo stesso e non
+     "Iscriviti". Se lo lasci vuoto il sito funziona lo stesso e non
      viene caricato nessun codice di tracciamento.
 
      Dove si trova: Meta Business Manager > Gestione eventi > Origini dati.
-     E' un numero lungo di circa 15 cifre. Vedi README.md.
      ------------------------------------------------------------------------- */
   metaPixelId: '1718452102773040',
 
@@ -40,48 +38,38 @@ window.OLTRE_CONFIG = {
      Come per il pixel: se lo lasci vuoto non viene caricato nulla.
 
      Dove si trova: Google Analytics > Amministrazione > Flussi di dati.
-     E' un codice che comincia per G- seguito da lettere e numeri.
      ------------------------------------------------------------------------- */
   googleAnalyticsId: 'G-3KHVF8JBP5',
 
 
   /* -------------------------------------------------------------------------
-     WORKSHOP CON POSTI ESAURITI
+     EVENTO EVENTBRITE DELLA GIORNATA
 
-     Quando un workshop si riempie, aggiungi qui il suo codice fra apici.
-     Sul sito il bottone "Prenotati" sparisce e al suo posto compare
-     la scritta "Posti esauriti", in grigio e non cliccabile.
-
-     Esempio con due workshop pieni:
-         esauriti: ['eb-dom-1000', 'eb-dom-1500'],
-
-     Per riaprire le iscrizioni basta togliere il codice da questa lista.
-     Lasciala cosi' com'e' finche' non serve.
-     ------------------------------------------------------------------------- */
-  esauriti: [],
-
-
-  /* -------------------------------------------------------------------------
-     CODICI DEGLI EVENTI EVENTBRITE
-
-     Per ogni workshop incolla fra gli apici il codice numerico
-     dell'evento: e' il numero finale dell'indirizzo Eventbrite.
+     Incolla fra gli apici il codice numerico dell'evento: e' il numero
+     finale dell'indirizzo Eventbrite.
 
      Esempio: se l'indirizzo dell'evento e'
-         https://www.eventbrite.it/e/workshop-movimento-tickets-1234567890
+         https://www.eventbrite.it/e/oltre-3-ottobre-tickets-1234567890
      il codice da incollare e' proprio       1234567890
 
      ATTENZIONE: l'evento deve essere PUBBLICATO su Eventbrite.
      Se resta in bozza, la finestra di iscrizione non si apre.
 
-     Ogni riga lasciata vuota non da errori: quel bottone
-     semplicemente non apre ancora nulla.
+     Finche' lo lasci vuoto il sito funziona: i quattro bottoni "Iscriviti"
+     portano semplicemente in fondo alla pagina, senza errori.
      ------------------------------------------------------------------------- */
-  eventi: {
-    'eb-sab-1500': '1998890284650',  // Sabato 15:00 — Movimento: di cosa sei fatto?
-    'eb-sab-1700': '1998890310728',  // Sabato 17:00 — Consapevolezza: sentire nel buio
-    'eb-dom-1000': '1998887696910',  // Domenica 10:00 — Yoga: Il corpo sa di cosa ha bisogno
-    'eb-dom-1200': '1998903753937',  // Domenica 12:00 — Meditazione somatica: Il corpo che integra
-    'eb-dom-1500': '1998903836183'   // Domenica 15:00-18:00 — Leggere il corpo (blocco unico, con guest)
-  }
+  eventoId: '',
+
+
+  /* -------------------------------------------------------------------------
+     COSTO DEL PRANZO
+
+     Compare nel programma, accanto a "Pranzo condiviso".
+     Scrivilo come vuoi che si legga, per esempio '10 €' oppure
+     'offerta libera'.
+
+     Se lo lasci vuoto, la riga dice solo "A cura del Tempio del Futuro
+     Perduto." senza nominare il prezzo.
+     ------------------------------------------------------------------------- */
+  costoPranzo: ''
 };
