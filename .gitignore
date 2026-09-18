@@ -34,6 +34,7 @@ desktop.ini
 !index.html
 !config.js
 !README.md
+!vercel.json
 
 !fonts/
 !fonts/**
