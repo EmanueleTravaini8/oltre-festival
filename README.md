@@ -99,7 +99,7 @@ Se restano in bozza su Eventbrite, la finestra di iscrizione non si apre.
 |---|---|
 | Barra in alto e copertina | nessuno: portano in fondo alla pagina |
 | "Iscriviti" dentro *Quando la forma cede* (11:00) | mattina |
-| "Iscriviti" dentro *Dal tappeto alla vita* (14:15) | pomeriggio |
+| "Iscriviti" dentro *Dal tappeto alla vita* (14:00) | pomeriggio |
 | "Iscriviti alla mattina" in fondo | mattina |
 | "Iscriviti al pomeriggio" in fondo | pomeriggio |
 
