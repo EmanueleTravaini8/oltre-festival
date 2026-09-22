@@ -25,12 +25,14 @@ pratiche di movimento, respiro e ascolto.
 
 | Cosa | Dove | Stato |
 |---|---|---|
-| Codice evento Eventbrite | `eventoId` in `config.js` | ⬜ **vuoto** |
-| Costo del pranzo | `costoPranzo` in `config.js` | ⬜ vuoto |
+| Codice evento della **mattina** | `eventoIdMattina` in `config.js` | ⬜ **vuoto** |
+| Codice evento del **pomeriggio** | `eventoIdPomeriggio` in `config.js` | ⬜ **vuoto** |
+| Costo del pranzo | `costoPranzo` in `config.js` | ✅ `10 €` |
 | Logo BASE Milano nel piè di pagina | file immagine mancante | ⬜ |
 
-Finché `eventoId` resta vuoto il sito funziona regolarmente: i quattro
-bottoni "Iscriviti" portano in fondo alla pagina, senza errori.
+Finché i due codici restano vuoti il sito funziona regolarmente: i bottoni
+"Iscriviti" portano alla sezione delle iscrizioni in fondo alla pagina, senza
+errori.
 
 ---
 
@@ -39,8 +41,8 @@ bottoni "Iscriviti" portano in fondo alla pagina, senza errori.
 ## In due parole: come funziona
 
 C'è un file, **`config.js`**, che contiene le uniche cose che cambiano nel
-tempo: i codici di misurazione, il codice dell'evento Eventbrite e il costo
-del pranzo.
+tempo: i codici di misurazione, i due codici degli eventi Eventbrite e il
+costo del pranzo.
 
 Ogni volta che salvi una modifica a quel file, **il sito si ripubblica da solo
 in circa un minuto**. Non devi avvisare nessuno e non devi fare altri passaggi.
@@ -63,35 +65,53 @@ Dopo circa un minuto il sito è aggiornato.
 
 ---
 
-## 2. Il codice dell'evento Eventbrite (`eventoId`)
+## 2. I due codici degli eventi Eventbrite
 
-È il numero finale dell'indirizzo dell'evento. Se l'indirizzo è
-
-```
-https://www.eventbrite.it/e/oltre-3-ottobre-tickets-1234567890
-```
-
-il codice da incollare è `1234567890`:
+La giornata si prenota in **due parti separate**, quindi su Eventbrite ci sono
+due eventi distinti e in `config.js` ci sono due righe:
 
 ```js
-eventoId: '1234567890',
+eventoIdMattina: '1234567890',
+eventoIdPomeriggio: '0987654321',
 ```
 
-### ⚠️ L'evento deve essere PUBBLICATO
+### Dove trovarli
 
-Se resta in bozza su Eventbrite, la finestra di iscrizione non si apre.
+Il codice è il numero finale dell'indirizzo dell'evento. Se l'indirizzo è
 
-### Cosa succede quando è compilato
+```
+https://www.eventbrite.it/e/2001897962696?aff=oddtdtcreator
+```
 
-I quattro bottoni "Iscriviti" (barra in alto, copertina, programma, fondo
-pagina) aprono la finestra di iscrizione **dentro il sito**, senza portare la
-persona altrove. Se lo script di Eventbrite non si carica, gli stessi bottoni
-diventano link normali verso la pagina dell'evento: non si rompe niente.
+il codice da incollare è `2001897962696`. La coda dopo il punto interrogativo
+(`?aff=...`) **non** va copiata.
 
-### Cosa succede se lo lasci vuoto
+Li trovi anche dal pannello organizzatore: eventbrite.it → **Gestisci i miei
+eventi** → apri l'evento → il numero è nell'indirizzo della pagina.
 
-I bottoni portano semplicemente alla sezione "Tieni il tuo posto" in fondo
-alla pagina. Nessun errore.
+### ⚠️ Gli eventi devono essere PUBBLICATI
+
+Se restano in bozza su Eventbrite, la finestra di iscrizione non si apre.
+
+### Quali bottoni usano quale codice
+
+| Bottone | Evento |
+|---|---|
+| Barra in alto e copertina | nessuno: portano in fondo alla pagina |
+| "Iscriviti" dentro *Quando la forma cede* (11:00) | mattina |
+| "Iscriviti" dentro *Dal tappeto alla vita* (14:15) | pomeriggio |
+| "Iscriviti alla mattina" in fondo | mattina |
+| "Iscriviti al pomeriggio" in fondo | pomeriggio |
+
+Quando il codice è compilato, quei bottoni aprono la finestra di iscrizione
+**dentro il sito**. Se lo script di Eventbrite non si carica, diventano link
+normali verso la pagina dell'evento: non si rompe niente.
+
+### Cosa succede se ne lasci uno vuoto
+
+Le due parti sono indipendenti: puoi compilarne una e lasciare l'altra vuota.
+I bottoni della parte non ancora configurata portano semplicemente alla sezione
+"Tieni il tuo posto" in fondo alla pagina. Nessun errore.
 
 ---
 
@@ -104,10 +124,11 @@ si legga:
 costoPranzo: '10 €',
 ```
 
-Diventa: *A cura del Tempio del Futuro Perduto, 10 €.*
+Diventa: *A cura del Tempio del Futuro Perduto: piatto completo, vegano e
+senza glutine, 10 €.*
 
-Se lo lasci vuoto la riga dice solo *A cura del Tempio del Futuro Perduto.*,
-senza nominare il prezzo.
+Se lo lasci vuoto la riga si chiude dopo "senza glutine", senza nominare il
+prezzo.
 
 ---
 
@@ -159,9 +180,16 @@ di dati** → apri il flusso web. È l'**ID misurazione**, comincia per `G-`.
 | `iscrizione_completata` | a iscrizione conclusa | contare chi si iscrive davvero |
 
 `page_view` lo conta Google da solo. Gli altri due portano con sé due campi:
-**`workshop`** (sempre `giornata-3-ottobre`) e **`posizione`**, che dice quale
-dei quattro bottoni è stato premuto — `iscriviti-barra`, `iscriviti-hero`,
-`iscriviti-programma`, `iscriviti-fondo`. Così vedi quale punto della pagina
+
+- **`workshop`** — quale parte della giornata: `mattina-3-ottobre`,
+  `pomeriggio-3-ottobre`, oppure `giornata-3-ottobre` per i bottoni della barra
+  e della copertina, che non aprono un checkout ma portano alle iscrizioni
+- **`posizione`** — quale bottone è stato premuto, fra `iscriviti-barra`,
+  `iscriviti-hero`, `iscriviti-programma-mattina`,
+  `iscriviti-programma-pomeriggio`, `iscriviti-fondo-mattina` e
+  `iscriviti-fondo-pomeriggio`
+
+Così vedi sia quale delle due parti tira di più, sia quale punto della pagina
 convince davvero.
 
 ### Cosa è già stato impostato nel pannello
@@ -201,6 +229,7 @@ Stanno in `index.html`, in fondo:
 ```
 index.html          la pagina, con testi e programma
 config.js           le impostazioni (l'unico file da modificare di solito)
+vercel.json         un solo build per commit, niente anteprime dal branch di lavoro
 README.md           questo file
 fonts/              il carattere Satoshi
 img/
