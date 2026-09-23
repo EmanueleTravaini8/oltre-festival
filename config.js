@@ -66,8 +66,8 @@ window.OLTRE_CONFIG = {
      posto" in fondo alla pagina. Le due parti sono indipendenti: puoi
      compilarne una e lasciare l'altra vuota.
      ------------------------------------------------------------------------- */
-  eventoIdMattina: '',
-  eventoIdPomeriggio: '',
+  eventoIdMattina: '2001897962696',
+  eventoIdPomeriggio: '2002094653002',
 
 
   /* -------------------------------------------------------------------------
