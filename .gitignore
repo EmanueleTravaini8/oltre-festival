@@ -32,9 +32,15 @@ desktop.ini
 # --- i file del sito ---
 !.gitignore
 !index.html
+!privacy.html
 !config.js
 !README.md
 !vercel.json
+!robots.txt
+
+# --- icone alla radice ---
+!favicon.ico
+!apple-touch-icon.png
 
 !fonts/
 !fonts/**

@@ -3,15 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OLTRE · Una giornata dal tappetino al quotidiano · 3 ottobre, Tempio del Futuro Perduto</title>
-<meta name="description" content="Festival itinerante e gratuito di pratiche di movimento, respiro e ascolto. Sabato 3 ottobre 2026 al Tempio del Futuro Perduto, Milano. Ingresso gratuito su iscrizione, posti limitati.">
+
+<title>OLTRE · Festival itinerante e gratuito di pratiche per il corpo · Milano</title>
+<meta name="description" content="OLTRE porta pratiche di movimento, respiro e ascolto negli spazi culturali di Milano. Gratuito, in gruppi di circa trenta persone, senza esperienza richiesta. La prossima tappa è a novembre.">
+<link rel="canonical" href="https://www.oltre-festival.com/">
+
+<!-- ============================================================
+     ANTEPRIMA QUANDO IL LINK VIENE CONDIVISO
+     (WhatsApp, email, Instagram, LinkedIn)
+     ============================================================ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.oltre-festival.com/">
+<meta property="og:site_name" content="OLTRE">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="OLTRE · Festival itinerante e gratuito di pratiche per il corpo">
+<meta property="og:description" content="Pratiche di movimento, respiro e ascolto negli spazi culturali di Milano. Gratuito, gruppi piccoli, nessuna esperienza richiesta.">
+<meta property="og:image" content="https://www.oltre-festival.com/img/anteprima-social.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un gruppo di persone in movimento durante una pratica di OLTRE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OLTRE · Festival itinerante e gratuito di pratiche per il corpo">
+<meta name="twitter:description" content="Pratiche di movimento, respiro e ascolto negli spazi culturali di Milano. Gratuito, gruppi piccoli, nessuna esperienza richiesta.">
+<meta name="twitter:image" content="https://www.oltre-festival.com/img/anteprima-social.jpg">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F5F0D8">
 
 <!-- ============================================================
      VERIFICA DEL DOMINIO PER META
      Serve SOLO se NON verifichi il dominio con il metodo DNS.
      Se usi il DNS, lascia tutto commentato come adesso.
-     Altrimenti: togli i due segni di commento dalla riga qui sotto
-     e incolla dentro content="" il codice che ti da Meta.
      ============================================================ -->
 <!-- <meta name="facebook-domain-verification" content="" /> -->
 
@@ -20,8 +43,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poly:ital@0;1&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fonts/satoshi.css">
 
-<!-- Impostazioni del sito: codici di misurazione, evento Eventbrite,
-     costo del pranzo. E' l'unico file che devi modificare. -->
+<!-- Impostazioni del sito: prossima tappa, galleria, codici di misurazione.
+     E' l'unico file che devi modificare. -->
 <script src="config.js"></script>
 
 <style>
@@ -35,9 +58,11 @@
   details[open] .sign { transform:rotate(45deg); }
   .sign { transition:transform .18s ease; }
 
-  /* stati hover (nel file di design erano attributi style-hover) */
-  .hv-viola:hover { background:#7D6074; color:#F5F0D8; }
-  .hv-lilla:hover { background:#CBC7DA; color:#2B2A26; }
+  /* stati hover dei bottoni */
+  .hv-viola:hover  { background:#7D6074; color:#F5F0D8; }
+  .hv-lilla:hover  { background:#CBC7DA; color:#2B2A26; }
+  .hv-carta:hover  { background:#F5F0D8; color:#2B2A26; }
+  .hv-bordo:hover  { border-color:#7D6074; color:#7D6074; }
 
   /* la scritta nella barra in alto si accorcia sugli schermi stretti */
   .solo-stretto { display:none; }
@@ -48,464 +73,610 @@
 
   /* gli elementi nascosti hanno uno style inline con display:
      serve !important perche' l'attributo hidden abbia effetto */
-  [hidden] { display: none !important; }
+  [hidden] { display:none !important; }
+
+  /* ---- galleria ----------------------------------------------------- */
+  /* La base e' uno scorrimento CSS con aggancio: funziona anche se il
+     JavaScript non parte. Le frecce e il conteggio sono in piu'. */
+  .gal-pista {
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    gap:0; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  }
+  .gal-pista::-webkit-scrollbar { display:none; }
+  .gal-foto { flex:0 0 100%; scroll-snap-align:center; position:relative; }
+  .gal-foto img {
+    width:100%; height:clamp(260px,52vw,520px);
+    object-fit:cover; display:block;
+  }
+  .gal-freccia { cursor:pointer; }
+  .gal-freccia:hover { background:#7D6074; color:#F5F0D8; border-color:#7D6074; }
+  .gal-freccia:disabled { opacity:.32; cursor:default; }
+  .gal-freccia:disabled:hover { background:transparent; color:#2B2A26; border-color:#c9c0ac; }
+
+  /* ---- fascia tipografica delle parole ------------------------------ */
+  .parola { white-space:nowrap; }
+
+  /* ---- banner dei cookie -------------------------------------------- */
+  #cookie-banner {
+    position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:#2B2A26; color:#F5F0D8;
+    padding:clamp(16px,3.4vw,22px) clamp(20px,5.5vw,56px);
+    display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px;
+    justify-content:space-between; box-shadow:0 -8px 28px rgba(43,42,38,.18);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    .gal-pista { scroll-behavior:auto; }
+  }
 </style>
-
-<!-- ============================================================
-     PIXEL META
-     Non fa nulla finche' metaPixelId in config.js e' vuoto:
-     niente richieste di rete, niente errori in console.
-     ============================================================ -->
-<script>
-(function () {
-  var cfg = window.OLTRE_CONFIG || {};
-  var pixelId = String(cfg.metaPixelId || '').trim();
-  if (!pixelId) return;            // pixel non configurato: si esce in silenzio
-
-  !function (f, b, e, v, n, t, s) {
-    if (f.fbq) return; n = f.fbq = function () {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-    };
-    if (!f._fbq) f._fbq = n;
-    n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
-    t = b.createElement(e); t.async = !0; t.src = v;
-    s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
-  }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-
-  fbq('init', pixelId);
-  fbq('track', 'PageView');
-})();
-</script>
-
-<!-- ============================================================
-     GOOGLE ANALYTICS (GA4)
-     Non fa nulla finche' googleAnalyticsId in config.js e' vuoto:
-     niente richieste di rete, niente errori in console.
-     La visita alla pagina (page_view) viene contata da sola.
-     ============================================================ -->
-<script>
-(function () {
-  var cfg  = window.OLTRE_CONFIG || {};
-  var gaId = String(cfg.googleAnalyticsId || '').trim();
-  if (!gaId) return;               // analytics non configurato: si esce in silenzio
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function () { window.dataLayer.push(arguments); };
-  window.gtag('js', new Date());
-  window.gtag('config', gaId);
-
-  var t = document.createElement('script');
-  t.async = true;
-  t.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
-  document.head.appendChild(t);
-})();
-</script>
 </head>
 <body>
 <div style="font-family:'Satoshi',sans-serif; color:#2B2A26; background:#F5F0D8; width:100%; box-sizing:border-box;" lang="it">
 
+  <!-- ============================ 1. BARRA ============================ -->
   <div style="position:sticky; top:0; z-index:20; background:#F5F0D8; border-bottom:1px solid #e2dac6; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
     <a href="#top" style="display:flex; align-items:center; gap:10px; min-width:0;">
       <img src="img/symbol-ink.png" alt="Oltre" style="width:26px; height:auto; display:block; flex-shrink:0;">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8578; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><span class="solo-largo">3 ott · Tempio del Futuro Perduto</span><span class="solo-stretto">3 ott · Tempio</span></span>
+      <span data-tappa-barra hidden style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8a8578; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></span>
     </a>
-    <a id="iscriviti-barra" data-iscriviti href="#iscriviti" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:14px; letter-spacing:0.02em; background:#2B2A26; color:#F5F0D8; padding:12px 20px; border-radius:100px; min-height:44px; box-sizing:border-box; display:flex; align-items:center; flex-shrink:0;" class="hv-viola">Iscriviti</a>
+    <a id="instagram-barra" data-traccia="clic_instagram" href="https://www.instagram.com/oltre_festival/" target="_blank" rel="noopener" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:14px; letter-spacing:0.02em; background:#2B2A26; color:#F5F0D8; padding:12px 20px; border-radius:100px; min-height:44px; box-sizing:border-box; display:flex; align-items:center; flex-shrink:0;" class="hv-viola">Segui Oltre</a>
   </div>
 
+  <!-- ============================ 2. HERO ============================= -->
   <section id="top" style="background:#CBC7DA; padding:clamp(38px,7.8vw,77px) clamp(20px,5.5vw,56px) clamp(31px,6.1vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(24px,4.3vw,38px);">
     <div style="display:flex; flex-direction:column; gap:clamp(16px,3vw,24px);">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#5b5170;">Un festival di pratiche per il corpo</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#5b5170;">Festival itinerante e gratuito · Milano</span>
       <img src="img/logo-oltre.png" alt="Oltre" style="width:min(84%,440px); height:auto; display:block;">
     </div>
-    <p style="font-family:'Poly',serif; font-size:clamp(21px,5vw,34px); line-height:1.4; color:#3d3b34; margin:0; max-width:24ch; text-wrap:pretty;">Una giornata dal tappetino al quotidiano.</p>
-    <div style="display:flex; flex-direction:column; gap:12px; padding-top:3px;">
-      <div style="display:flex; flex-wrap:wrap; gap:10px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:clamp(12px,3vw,15px); letter-spacing:0.1em; text-transform:uppercase; border:1px solid #8b83a6; padding:11px 16px; border-radius:100px;">Sabato 3 ottobre 2026</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:clamp(12px,3vw,15px); letter-spacing:0.1em; text-transform:uppercase; border:1px solid #8b83a6; padding:11px 16px; border-radius:100px;">Ingresso gratuito su iscrizione</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:clamp(12px,3vw,15px); letter-spacing:0.1em; text-transform:uppercase; border:1px solid #8b83a6; padding:11px 16px; border-radius:100px;">Tempio del Futuro Perduto</span>
-      </div>
-      <a id="iscriviti-hero" data-iscriviti href="#iscriviti" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.4vw,22px); background:#2B2A26; color:#F5F0D8; padding:19px 28px; border-radius:100px; text-align:center; min-height:56px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; max-width:420px;" class="hv-viola">Iscriviti</a>
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#5b5170; max-width:420px; text-align:center;">Posti limitati · Mattina e pomeriggio su prenotazione separata</span>
+    <p style="font-family:'Poly',serif; font-size:clamp(21px,5vw,34px); line-height:1.4; color:#3d3b34; margin:0; max-width:24ch; text-wrap:pretty;">Ci sono cose che capisci solo facendole.</p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:clamp(12px,3vw,15px); letter-spacing:0.1em; text-transform:uppercase; border:1px solid #8b83a6; padding:11px 16px; border-radius:100px;">Gratuito</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:clamp(12px,3vw,15px); letter-spacing:0.1em; text-transform:uppercase; border:1px solid #8b83a6; padding:11px 16px; border-radius:100px;">Nessuna esperienza richiesta</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:clamp(12px,3vw,15px); letter-spacing:0.1em; text-transform:uppercase; border:1px solid #8b83a6; padding:11px 16px; border-radius:100px;">Spazi diversi della città</span>
     </div>
-    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6b6280;">Dopo la prima edizione a BASE Milano, 12–13 settembre</span>
+
+    <!-- riquadro della prossima tappa, riempito da config.js -->
+    <div data-tappa-hero hidden style="background:#F5F0D8; border-radius:16px; padding:clamp(18px,3.6vw,24px); display:flex; flex-direction:column; gap:7px; max-width:460px; box-sizing:border-box;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7D6074;">Prossima tappa</span>
+      <span data-tappa-hero-testo style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.01em; line-height:1.3;"></span>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:12px; padding-top:3px;">
+      <a id="instagram-hero" data-traccia="clic_instagram" href="https://www.instagram.com/oltre_festival/" target="_blank" rel="noopener" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); background:#2B2A26; color:#F5F0D8; padding:17px 26px; border-radius:100px; min-height:56px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;" class="hv-viola">Segui Oltre su Instagram</a>
+      <a href="#ospita" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); color:#2B2A26; border:1px solid #8b83a6; padding:17px 26px; border-radius:100px; min-height:56px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;" class="hv-bordo">Ospita una tappa</a>
+    </div>
   </section>
 
-  <section style="background:#2B2A26; padding:clamp(35px,7vw,70px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(19px,3.5vw,28px);">
-    <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#9a94b0;">Perché è nato</span>
-    <p style="font-family:'Poly',serif; font-size:clamp(21px,5.2vw,34px); line-height:1.42; color:#F5F0D8; margin:0; max-width:32ch; text-wrap:pretty;">Ci sono cose che capisci solo facendole.</p>
-    <p style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:clamp(15px,3.9vw,20px); line-height:1.62; color:#b3adc4; margin:0; max-width:44ch; text-wrap:pretty;">Passiamo molto tempo a cercare di capire ciò che viviamo attraverso il pensiero. OLTRE nasce dalla possibilità di partire da un altro punto: il corpo.</p>
+  <!-- ======================= 3. COSA FACCIAMO ========================= -->
+  <section style="background:#2B2A26; padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(22px,4vw,32px);">
+    <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#9a94b0;">Cosa facciamo</span>
+    <p style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:clamp(15px,3.9vw,20px); line-height:1.62; color:#F5F0D8; margin:0; max-width:44ch; text-wrap:pretty;">Passiamo molto tempo a cercare di capire ciò che viviamo attraverso il pensiero. OLTRE nasce dalla possibilità di partire da un altro punto: il corpo.</p>
     <p style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:clamp(15px,3.9vw,20px); line-height:1.62; color:#b3adc4; margin:0; max-width:44ch; text-wrap:pretty;">Muoversi, respirare, fermarsi, percepire, entrare in relazione diventano strumenti per osservare quello che succede dentro e intorno a noi.</p>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:clamp(11.5px,2.9vw,13px); letter-spacing:0.08em; line-height:1.7; color:#8a8578; max-width:52ch; border-top:1px solid #45423b; padding-top:clamp(16px,3vw,22px);">Pratiche di movimento, respiro e ascolto per gruppi di circa trenta persone, ogni volta in uno spazio diverso della città.</span>
   </section>
 
+  <!-- ======================= 4. COME FUNZIONA ========================= -->
   <section style="background:#F5F0D8; padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(24px,4.5vw,36px);">
     <div style="display:flex; flex-direction:column; gap:12px;">
       <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">Come funziona</span>
-      <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0; max-width:20ch;">Cinque scelte, non cinque slogan</h2>
+      <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Cinque scelte, non cinque slogan</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:14px;">
-      <div style="background:#efe9dd; border:1px solid #e2dac6; border-radius:16px; padding:clamp(20px,5vw,28px); display:flex; flex-direction:column; gap:10px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#7D6074;">01</span>
-        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(19px,4.6vw,24px); line-height:1.12; letter-spacing:-0.025em; margin:0;">Gratuito, senza asterischi</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:clamp(14px,2.6vw,20px);">
+      <div style="background:#efe9dd; border-radius:14px; padding:clamp(20px,3.6vw,26px); display:flex; flex-direction:column; gap:9px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; color:#7D6074;">01</span>
+        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,20px); letter-spacing:-0.02em; line-height:1.24; margin:0;">Gratuito, senza asterischi</h3>
+        <p style="font-family:'Poly',serif; font-size:15px; line-height:1.55; color:#6d685c; margin:0;">Nessun contributo, nessuna offerta consigliata, nessuna tessera.</p>
       </div>
-      <div style="background:#efe9dd; border:1px solid #e2dac6; border-radius:16px; padding:clamp(20px,5vw,28px); display:flex; flex-direction:column; gap:10px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#7D6074;">02</span>
-        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(19px,4.6vw,24px); line-height:1.12; letter-spacing:-0.025em; margin:0;">Spazi che conosci già</h3>
+      <div style="background:#efe9dd; border-radius:14px; padding:clamp(20px,3.6vw,26px); display:flex; flex-direction:column; gap:9px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; color:#7D6074;">02</span>
+        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,20px); letter-spacing:-0.02em; line-height:1.24; margin:0;">Spazi che conosci già</h3>
+        <p style="font-family:'Poly',serif; font-size:15px; line-height:1.55; color:#6d685c; margin:0;">La pratica si sposta negli spazi culturali della città, invece di chiederti di entrare in un centro dedicato.</p>
       </div>
-      <div style="background:#efe9dd; border:1px solid #e2dac6; border-radius:16px; padding:clamp(20px,5vw,28px); display:flex; flex-direction:column; gap:10px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#7D6074;">03</span>
-        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(19px,4.6vw,24px); line-height:1.12; letter-spacing:-0.025em; margin:0;">Gruppi piccoli</h3>
+      <div style="background:#efe9dd; border-radius:14px; padding:clamp(20px,3.6vw,26px); display:flex; flex-direction:column; gap:9px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; color:#7D6074;">03</span>
+        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,20px); letter-spacing:-0.02em; line-height:1.24; margin:0;">Gruppi piccoli</h3>
+        <p style="font-family:'Poly',serif; font-size:15px; line-height:1.55; color:#6d685c; margin:0;">Circa trenta persone per pratica, perché chi guida possa vedere ognunə.</p>
       </div>
-      <div style="background:#efe9dd; border:1px solid #e2dac6; border-radius:16px; padding:clamp(20px,5vw,28px); display:flex; flex-direction:column; gap:10px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#7D6074;">04</span>
-        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(19px,4.6vw,24px); line-height:1.12; letter-spacing:-0.025em; margin:0;">Nessun livello richiesto</h3>
+      <div style="background:#efe9dd; border-radius:14px; padding:clamp(20px,3.6vw,26px); display:flex; flex-direction:column; gap:9px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; color:#7D6074;">04</span>
+        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,20px); letter-spacing:-0.02em; line-height:1.24; margin:0;">Nessun livello richiesto</h3>
+        <p style="font-family:'Poly',serif; font-size:15px; line-height:1.55; color:#6d685c; margin:0;">Chi guida accompagna un'esplorazione, non insegna una forma da eseguire correttamente.</p>
       </div>
-      <div style="background:#7D6074; border-radius:16px; padding:clamp(20px,5vw,28px); display:flex; flex-direction:column; gap:10px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#e4cfdc;">05</span>
-        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(19px,4.6vw,24px); line-height:1.12; letter-spacing:-0.025em; margin:0; color:#F5F0D8;">Il lavoro in coppia</h3>
-      </div>
-    </div>
-  </section>
-
-  <section id="prima-edizione" style="background:#2B2A26;">
-    <div style="width:100%; height:clamp(240px,54vw,460px); background:#221f1c; position:relative; overflow:hidden;">
-      <img src="img/foto-hero.jpg" alt="Una persona in movimento durante la prima edizione" loading="lazy" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:56% 36%; display:block;">
-    </div>
-    <div style="padding:clamp(35px,7vw,70px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(19px,3.5vw,28px);">
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#9a94b0;">Prima edizione · BASE Milano, 12–13 settembre</span>
-        <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0; color:#F5F0D8; max-width:18ch;">Cento persone, due giorni.</h2>
-      </div>
-      <p style="font-family:'Poly',serif; font-size:clamp(17px,4.2vw,24px); line-height:1.5; color:#CBC7DA; margin:0; max-width:38ch; text-wrap:pretty;">A settembre OLTRE ha preso forma per la prima volta a BASE Milano.</p>
-      <div style="display:flex; flex-direction:column; gap:7px; max-width:46ch;">
-        <span style="font-family:'Poly',serif; font-size:clamp(16px,4vw,20px); line-height:1.5; color:#b3adc4; text-wrap:pretty;">Cento persone, pratiche diverse e due giorni per lasciare un po’ di spazio a quello che normalmente passa in secondo piano: il corpo, le sensazioni, la relazione, quello che emerge quando non dobbiamo per forza capire tutto subito.</span>
-        <span style="font-family:'Poly',serif; font-size:clamp(16px,4vw,20px); line-height:1.5; color:#b3adc4; text-wrap:pretty;">Ognunə è arrivatə con qualcosa di diverso e se n’è andatə con qualcosa di proprio.</span>
-        <span style="font-family:'Poly',serif; font-size:clamp(16px,4vw,20px); line-height:1.5; color:#b3adc4; text-wrap:pretty;">OLTRE è iniziato così: come uno spazio da attraversare, più che da spiegare.</span>
-      </div>
-      <p style="font-family:'Poly',serif; font-size:clamp(17px,4.2vw,24px); line-height:1.5; color:#CBC7DA; margin:0; max-width:38ch; text-wrap:pretty;">Il 3 ottobre ripartiamo da lì.</p>
-    </div>
-  </section>
-
-  <section id="programma" style="background:#B8C8D8; padding:clamp(35px,7vw,70px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(21px,3.9vw,31px);">
-    <div style="display:flex; flex-direction:column; gap:10px;">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#4d5f70;">Programma</span>
-      <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Una giornata</h2>
-      <p style="font-family:'Poly',serif; font-size:clamp(16px,4vw,20px); line-height:1.55; color:#2B2A26; margin:0; max-width:42ch; text-wrap:pretty;">Sabato 3 ottobre, dalle 11:00 alle 15:30. Mattina e pomeriggio si prenotano separatamente: puoi venire a una delle due parti o a entrambe.</p>
-    </div>
-    <div style="background:#F5F0D8; border-radius:16px; padding:clamp(20px,5vw,32px); display:flex; flex-direction:column; gap:17px; max-width:820px; box-sizing:border-box;">
-      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; border-bottom:1px solid #e2dac6; padding-bottom:12px;">
-        <span style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(22px,5.4vw,30px); letter-spacing:-0.03em; text-transform:uppercase;">Sabato 3</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8578;">11:00 — 15:30</span>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:17px;">
-
-
-        <div style="display:flex; gap:14px;">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#253A5B; min-width:52px; padding-top:3px;">11:00</span>
-          <div style="display:flex; flex-direction:column; gap:7px;">
-            <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,19px); letter-spacing:-0.02em; line-height:1.22;">Quando la forma cede</span>
-            <span style="font-family:'Poly',serif; font-style:italic; font-size:15px; line-height:1.5; color:#3d3b34;">E se una posizione non fosse qualcosa da eseguire, ma qualcosa da abitare?</span>
-            <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#6d685c;">Una pratica che parte dallo yoga e si lascia contaminare da altri linguaggi, per esplorare cosa succede quando una forma smette di essere rigida e comincia ad adattarsi al corpo che la attraversa.</span>
-            <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#6d685c;">La forma può guidarci senza definirci: è un punto di partenza. Il resto lo fa il corpo.</span>
-            <div style="display:flex; flex-wrap:wrap; gap:6px; padding-top:2px;"><span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6d685c; border:1px solid #e2dac6; padding:4px 9px; border-radius:40px;">Porta il tuo tappetino</span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6d685c; border:1px solid #e2dac6; padding:4px 9px; border-radius:40px;">Nessuna esperienza richiesta</span></div>
-            <a id="iscriviti-programma-mattina" data-iscriviti data-evento="mattina" href="#iscriviti" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:15px; letter-spacing:0.01em; background:#2B2A26; color:#F5F0D8; padding:12px 22px; border-radius:100px; min-height:44px; box-sizing:border-box; display:inline-flex; align-items:center; align-self:flex-start; margin-top:4px;" class="hv-viola">Iscriviti</a>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:14px;">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#253A5B; min-width:52px; padding-top:3px;">12:30</span>
-          <div style="display:flex; flex-direction:column; gap:5px;">
-            <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,19px); letter-spacing:-0.02em; line-height:1.22;">Pranzo condiviso</span>
-            <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#6d685c;">A cura del Tempio del Futuro Perduto: piatto completo, vegano e senza glutine<span data-costo-pranzo></span>.</span>
-            <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#6d685c;">Facoltativo, sia per chi si iscrive alla mattina sia per chi si iscrive al pomeriggio.</span>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:14px;">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#253A5B; min-width:52px; padding-top:3px;">14:00</span>
-          <div style="display:flex; flex-direction:column; gap:7px;">
-            <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,19px); letter-spacing:-0.02em; line-height:1.22;">Dal tappeto alla vita</span>
-            <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#6d685c;">Uno spazio per esplorare cosa succede quando ciò che incontriamo nella pratica esce dal tappeto e incontra la vita di tutti i giorni.</span>
-            <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#6d685c;">Partiremo dal corpo, dall’ascolto e da ciò che emergerà nel gruppo per cercare insieme modi nuovi di portare la pratica fuori dalla pratica: nelle giornate, nelle relazioni, nelle scelte, nel modo in cui abitiamo il nostro tempo.</span>
-            <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#6d685c;">Un laboratorio aperto, da attraversare e costruire insieme.</span>
-            <div style="display:flex; flex-wrap:wrap; gap:6px; padding-top:2px;"><span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6d685c; border:1px solid #e2dac6; padding:4px 9px; border-radius:40px;">In piccoli gruppi</span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6d685c; border:1px solid #e2dac6; padding:4px 9px; border-radius:40px;">Nessuna esperienza richiesta</span></div>
-            <a id="iscriviti-programma-pomeriggio" data-iscriviti data-evento="pomeriggio" href="#iscriviti" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:15px; letter-spacing:0.01em; background:#2B2A26; color:#F5F0D8; padding:12px 22px; border-radius:100px; min-height:44px; box-sizing:border-box; display:inline-flex; align-items:center; align-self:flex-start; margin-top:4px;" class="hv-viola">Iscriviti</a>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:14px;">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#253A5B; min-width:52px; padding-top:3px;">15:30</span>
-          <div style="display:flex; flex-direction:column; gap:5px;">
-            <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,19px); letter-spacing:-0.02em; line-height:1.22;">Fine</span>
-          </div>
-        </div>
-
-
+      <div style="background:#efe9dd; border-radius:14px; padding:clamp(20px,3.6vw,26px); display:flex; flex-direction:column; gap:9px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; color:#7D6074;">05</span>
+        <h3 style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,20px); letter-spacing:-0.02em; line-height:1.24; margin:0;">Il lavoro in coppia</h3>
+        <p style="font-family:'Poly',serif; font-size:15px; line-height:1.55; color:#6d685c; margin:0;">Molte pratiche prevedono momenti in coppia: puoi venire anche da solə.</p>
       </div>
     </div>
   </section>
 
-  <section id="dove" style="background:#F5F0D8; padding:clamp(35px,7vw,70px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(17px,3.5vw,26px);">
-    <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">Dove</span>
-    <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0; max-width:18ch;">Tempio del Futuro Perduto.</h2>
-    <div style="background:#efe9dd; border:1px solid #e2dac6; border-radius:16px; padding:clamp(22px,5vw,32px); display:flex; flex-direction:column; gap:16px; max-width:620px; box-sizing:border-box;">
-      <div style="display:flex; flex-direction:column; gap:5px;">
-        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(19px,4.6vw,24px); letter-spacing:-0.025em;">Tempio del Futuro Perduto</span>
-        <span style="font-family:'Poly',serif; font-size:clamp(17px,4.2vw,21px); line-height:1.5; color:#3d3b34;">Via Luigi Nono 7, Milano</span>
-      </div>
-      <div style="display:flex; gap:14px; align-items:baseline; border-top:1px solid #e2dac6; padding-top:14px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8578; min-width:88px;">Sabato 3 ottobre</span>
-        <span style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:clamp(15px,3.9vw,18px); color:#3d3b34;">11:00 — 15:30</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" style="background:#CBC7DA; padding:clamp(35px,7vw,70px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(19px,3.5vw,28px);">
-    <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Domande</h2>
-    <div style="display:flex; flex-direction:column; gap:9px; max-width:820px;">
-      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
-        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,20px); letter-spacing:-0.02em;">Devo avere esperienza?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
-        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 19px; max-width:46ch; text-wrap:pretty;">No. Le pratiche sono pensate per chi non ne ha mai fatta una. Chi guida accompagna un'esplorazione, non insegna una forma da eseguire correttamente.</p>
-      </details>
-      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
-        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,20px); letter-spacing:-0.02em;">Non c'ero a settembre, posso venire?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
-        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 19px; max-width:46ch; text-wrap:pretty;">Sì. La giornata è aperta a chi ha partecipato alla prima edizione e a chi arriva per la prima volta.</p>
-      </details>
-      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
-        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,20px); letter-spacing:-0.02em;">Posso venire solo la mattina o solo il pomeriggio?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
-        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 19px; max-width:46ch; text-wrap:pretty;">Sì. Sono due iscrizioni separate: prenoti quello che ti interessa, o entrambi.</p>
-      </details>
-      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
-        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,20px); letter-spacing:-0.02em;">È davvero gratuito?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
-        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 19px; max-width:46ch; text-wrap:pretty;">Sì, nessun contributo, nessuna offerta consigliata, nessuna tessera. L'unica cosa a parte è il pranzo, facoltativo: 10 €, a cura del Tempio del Futuro Perduto.</p>
-      </details>
-      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
-        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,20px); letter-spacing:-0.02em;">Com'è il pranzo?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
-        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 19px; max-width:46ch; text-wrap:pretty;">Un piatto completo, vegano e senza glutine, preparato dal Tempio del Futuro Perduto. Costa 10 € e si paga sul posto. È facoltativo.</p>
-      </details>
-      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
-        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4.1vw,20px); letter-spacing:-0.02em;">Cosa devo portare?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
-        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 19px; max-width:46ch; text-wrap:pretty;">Per la mattina il tuo tappetino, abiti comodi e una bottiglia d'acqua. Per il pomeriggio bastano abiti comodi e acqua.</p>
-      </details>
-    </div>
-  </section>
-
-  <section id="iscriviti" style="background:#2B2A26; padding:clamp(38px,7.8vw,77px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(21px,3.9vw,30px);">
+  <!-- ======================== 5. LE PRATICHE ========================== -->
+  <section id="pratiche" style="background:#B8C8D8; padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(24px,4.5vw,36px);">
     <div style="display:flex; flex-direction:column; gap:12px;">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#9a94b0;">Iscrizioni</span>
-      <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(30px,7.6vw,58px); line-height:0.94; letter-spacing:-0.04em; text-transform:uppercase; margin:0; color:#F5F0D8; max-width:18ch;">Tieni il tuo posto</h2>
-      <p style="font-family:'Poly',serif; font-size:clamp(17px,4.2vw,22px); line-height:1.5; color:#CBC7DA; margin:0; max-width:38ch; text-wrap:pretty;">L'ingresso è gratuito, i posti sono limitati. Mattina e pomeriggio hanno due iscrizioni separate. Registrandoti ricevi le indicazioni pratiche e le informazioni sull'accessibilità dello spazio.</p>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#4d5f70;">Le pratiche</span>
+      <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Cosa abbiamo proposto</h2>
     </div>
-    <div style="display:flex; flex-wrap:wrap; gap:14px;">
-      <div style="display:flex; flex-direction:column; gap:7px; flex:1 1 240px; max-width:320px;">
-        <a id="iscriviti-fondo-mattina" data-iscriviti data-evento="mattina" href="#iscriviti" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); background:#F5F0D8; color:#2B2A26; padding:17px 24px; border-radius:100px; text-align:center; min-height:56px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;" class="hv-lilla">Iscriviti alla mattina</a>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#9a94b0; text-align:center;">11:00 — 12:30</span>
+    <div style="display:flex; flex-direction:column;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; padding:clamp(14px,2.6vw,18px) 0; border-top:1px solid #9fb2c4;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,21px); letter-spacing:-0.02em;">di che cosa sei fattə?</span>
+        <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#46576a;">movimento guidato dagli elementi, con musica dal vivo</span>
       </div>
-      <div style="display:flex; flex-direction:column; gap:7px; flex:1 1 240px; max-width:320px;">
-        <a id="iscriviti-fondo-pomeriggio" data-iscriviti data-evento="pomeriggio" href="#iscriviti" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); background:#F5F0D8; color:#2B2A26; padding:17px 24px; border-radius:100px; text-align:center; min-height:56px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;" class="hv-lilla">Iscriviti al pomeriggio</a>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#9a94b0; text-align:center;">14:00 — 15:30</span>
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; padding:clamp(14px,2.6vw,18px) 0; border-top:1px solid #9fb2c4;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,21px); letter-spacing:-0.02em;">sentire nel buio</span>
+        <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#46576a;">pratica sensoriale a occhi bendati, da solə e in coppia</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; padding:clamp(14px,2.6vw,18px) 0; border-top:1px solid #9fb2c4;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,21px); letter-spacing:-0.02em;">il corpo sa di cosa ha bisogno</span>
+        <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#46576a;">respiro e yoga</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; padding:clamp(14px,2.6vw,18px) 0; border-top:1px solid #9fb2c4;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,21px); letter-spacing:-0.02em;">il corpo che integra</span>
+        <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#46576a;">meditazione somatica con stimolo olfattivo</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; padding:clamp(14px,2.6vw,18px) 0; border-top:1px solid #9fb2c4;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,21px); letter-spacing:-0.02em;">leggere il corpo</span>
+        <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#46576a;">osservazione del corpo, scrittura e tarocchi</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; padding:clamp(14px,2.6vw,18px) 0; border-top:1px solid #9fb2c4;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,21px); letter-spacing:-0.02em;">quando la forma cede</span>
+        <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#46576a;">dallo yoga verso altri linguaggi di movimento</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; padding:clamp(14px,2.6vw,18px) 0; border-top:1px solid #9fb2c4; border-bottom:1px solid #9fb2c4;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(17px,4.2vw,21px); letter-spacing:-0.02em;">dal tappeto alla vita</span>
+        <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#46576a;">laboratorio per portare la pratica nella vita di tutti i giorni</span>
       </div>
     </div>
-    <span style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; letter-spacing:0.08em; text-transform:uppercase; color:#b3adc4; max-width:44ch;">Segui Oltre su eventbrite.com/o/oltre per le prossime date.</span>
   </section>
 
-  <footer style="background:#F5F0D8; padding:clamp(35px,7vw,63px) clamp(20px,5.5vw,56px) clamp(70px,12.2vw,63px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(24px,4.3vw,35px);">
-    <div style="display:flex; flex-direction:column; gap:14px;">
+  <!-- ========================== 6. FIN QUI ============================ -->
+  <section id="fin-qui" style="background:#2B2A26; color:#F5F0D8; box-sizing:border-box; display:flex; flex-direction:column;">
+    <img src="img/foto-hero.jpg" alt="Una persona in movimento durante la prima edizione" loading="lazy" decoding="async" style="width:100%; height:clamp(200px,40vw,380px); object-fit:cover; display:block;">
+    <div style="padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); display:flex; flex-direction:column; gap:clamp(26px,5vw,40px);">
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#9a94b0;">Fin qui</span>
+        <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Quello che è successo</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); gap:clamp(18px,3.4vw,28px);">
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <span style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(38px,9vw,58px); line-height:1; letter-spacing:-0.04em;">250</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#b3adc4;">iscrizioni</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <span style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(38px,9vw,58px); line-height:1; letter-spacing:-0.04em;">~100</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#b3adc4;">persone</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <span style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(38px,9vw,58px); line-height:1; letter-spacing:-0.04em;">70</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#b3adc4;">in una sola pratica</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <span style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(38px,9vw,58px); line-height:1; letter-spacing:-0.04em;">9,2<span style="font-size:0.5em; color:#b3adc4;">/10</span></span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#b3adc4;">soddisfazione media</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <span style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(38px,9vw,58px); line-height:1; letter-spacing:-0.04em;">9,7<span style="font-size:0.5em; color:#b3adc4;">/10</span></span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:#b3adc4;">liberə di esplorare senza giudizio</span>
+        </div>
+      </div>
+
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.08em; line-height:1.7; color:#8a8578; max-width:60ch;">Prima edizione. Voti dal questionario anonimo post-evento, 33 risposte.</span>
+
+      <div style="display:flex; flex-direction:column; border-top:1px solid #45423b; padding-top:clamp(20px,4vw,30px);">
+        <div style="display:flex; flex-wrap:wrap; gap:4px 16px; align-items:baseline; padding:clamp(12px,2.4vw,16px) 0;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; color:#CBC7DA; min-width:12ch;">12–13 set 2026</span>
+          <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.02em;">BASE Milano, Sala 1400</span>
+          <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#b3adc4;">prima edizione, due giornate, cinque pratiche</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:4px 16px; align-items:baseline; padding:clamp(12px,2.4vw,16px) 0; border-top:1px solid #45423b;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; color:#CBC7DA; min-width:12ch;">3 ott 2026</span>
+          <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.02em;">Tempio del Futuro Perduto</span>
+          <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#b3adc4;">una giornata dal tappetino al quotidiano, 40 partecipanti</span>
+        </div>
+        <div data-tappa-timeline hidden style="display:flex; flex-wrap:wrap; gap:4px 16px; align-items:baseline; padding:clamp(12px,2.4vw,16px) 0; border-top:1px solid #45423b;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; color:#CBC7DA; min-width:12ch;">nov 2026</span>
+          <span data-tappa-timeline-testo style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.02em;"></span>
+          <span style="font-family:'Poly',serif; font-size:15px; line-height:1.5; color:#b3adc4;">prossima tappa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== 7. GALLERIA =========================== -->
+  <section id="galleria" data-galleria hidden style="background:#F5F0D8; padding:clamp(40px,8vw,80px) 0 clamp(40px,8vw,80px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(20px,3.6vw,28px);">
+    <div style="padding:0 clamp(20px,5.5vw,56px); display:flex; flex-direction:column; gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">Galleria</span>
+      <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Com'è stato</h2>
+    </div>
+
+    <div data-gal-pista class="gal-pista" tabindex="0" aria-label="Galleria fotografica" style="outline:none;"></div>
+
+    <div style="padding:0 clamp(20px,5.5vw,56px); display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <span data-gal-didascalia style="font-family:'Poly',serif; font-style:italic; font-size:15px; line-height:1.5; color:#6d685c; min-height:1.5em;"></span>
+      <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+        <span data-gal-conteggio style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; color:#6d685c;"></span>
+        <button data-gal-prec class="gal-freccia" aria-label="Foto precedente" style="font-family:'JetBrains Mono',monospace; font-size:16px; line-height:1; color:#2B2A26; background:transparent; border:1px solid #c9c0ac; border-radius:100px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; transition:background .18s ease, color .18s ease, border-color .18s ease;">←</button>
+        <button data-gal-succ class="gal-freccia" aria-label="Foto successiva" style="font-family:'JetBrains Mono',monospace; font-size:16px; line-height:1; color:#2B2A26; background:transparent; border:1px solid #c9c0ac; border-radius:100px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; transition:background .18s ease, color .18s ease, border-color .18s ease;">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 8. CON LE PAROLE =========================== -->
+  <section style="background:#CBC7DA; padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(26px,5vw,38px);">
+    <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#5b5170;">Con le parole di chi c'era</span>
+
+    <p style="font-family:'Poly',serif; font-size:clamp(19px,4.6vw,30px); line-height:1.5; color:#3d3b34; margin:0; max-width:30ch; text-wrap:pretty;"><span class="parola">spazio sicuro</span> · <span class="parola">a mio agio</span> · <span class="parola">inclusiva</span> · <span class="parola">delicatezza</span> · <span class="parola">accoglienza</span> · <span class="parola">attento alla persona</span> · <span class="parola">ascolto personale</span> · <span class="parola">intensa</span> · <span class="parola">significativa</span> · <span class="parola">fatene di più</span></p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:clamp(14px,2.6vw,20px);">
+      <blockquote style="margin:0; background:#F5F0D8; border-radius:14px; padding:clamp(20px,3.6vw,26px);">
+        <p style="font-family:'Poly',serif; font-size:16px; line-height:1.58; color:#3d3b34; margin:0;">«Mi ha aiutato tanto e mi ha smosso qualcosa a livello interiore che ora porterò dietro con me nella vita quotidiana.»</p>
+      </blockquote>
+      <blockquote style="margin:0; background:#F5F0D8; border-radius:14px; padding:clamp(20px,3.6vw,26px);">
+        <p style="font-family:'Poly',serif; font-size:16px; line-height:1.58; color:#3d3b34; margin:0;">«Ho molto apprezzato la chiarezza delle spiegazioni e lo spazio sicuro che è stato creato.»</p>
+      </blockquote>
+      <blockquote style="margin:0; background:#F5F0D8; border-radius:14px; padding:clamp(20px,3.6vw,26px);">
+        <p style="font-family:'Poly',serif; font-size:16px; line-height:1.58; color:#3d3b34; margin:0;">«L'esperienza è stata davvero bella, inclusiva, guidata bene e mi è piaciuta tantissimo la vostra delicatezza e accoglienza.»</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ====================== 9. PROSSIMA TAPPA ========================= -->
+  <section id="prossima-tappa" style="background:#7D6074; color:#F5F0D8; padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(22px,4vw,32px);">
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#e0d3dc;">Prossima tappa</span>
+      <h2 data-tappa-titolo style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Novembre 2026</h2>
+    </div>
+    <p data-tappa-testo style="font-family:'Poly',serif; font-size:clamp(17px,4.2vw,22px); line-height:1.5; color:#f0e6ed; margin:0; max-width:40ch; text-wrap:pretty;"></p>
+    <div data-tappa-bottoni style="display:flex; flex-wrap:wrap; gap:12px;"></div>
+  </section>
+
+  <!-- ======================= 10. OSPITA UNA TAPPA ===================== -->
+  <section id="ospita" style="background:#F5F0D8; padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(22px,4vw,30px);">
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">Ospita una tappa</span>
+      <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Cerchiamo spazi</h2>
+    </div>
+    <p style="font-family:'Poly',serif; font-size:clamp(16px,4vw,20px); line-height:1.56; color:#3d3b34; margin:0; max-width:46ch; text-wrap:pretty;">Oltre è itinerante: ogni tappa vive in uno spazio diverso della città. Cerchiamo spazi che possano accogliere gruppi di circa trenta persone in un ambiente raccolto e acusticamente protetto.</p>
+    <p style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:clamp(15px,3.7vw,18px); line-height:1.6; color:#6d685c; margin:0; max-width:46ch;">Portiamo noi programma, conduzione e comunicazione.</p>
+    <div>
+      <a id="contatto-spazi" data-traccia="contatto_spazi" href="mailto:oltre_festival@outlook.it?subject=Ospitare%20Oltre" style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); background:#2B2A26; color:#F5F0D8; padding:17px 26px; border-radius:100px; min-height:56px; box-sizing:border-box; display:inline-flex; align-items:center; justify-content:center;" class="hv-viola">Scrivici per ospitare una tappa</a>
+    </div>
+  </section>
+
+  <!-- ========================== 11. DOMANDE =========================== -->
+  <section id="faq" style="background:#B8C8D8; padding:clamp(40px,8vw,80px) clamp(20px,5.5vw,56px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(20px,3.6vw,28px);">
+    <h2 style="font-family:'Satoshi Black','Satoshi',sans-serif; font-weight:400; font-size:clamp(28px,7vw,52px); line-height:0.96; letter-spacing:-0.035em; text-transform:uppercase; margin:0;">Domande</h2>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
+        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.02em;">Quando è la prossima tappa?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
+        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 22px; max-width:46ch; text-wrap:pretty;">A novembre. Data e spazio li annunciamo su Instagram.</p>
+      </details>
+      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
+        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.02em;">Quanto costa?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
+        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 22px; max-width:46ch; text-wrap:pretty;">Niente. Nessun contributo, nessuna offerta consigliata, nessuna tessera.</p>
+      </details>
+      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
+        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.02em;">Devo avere esperienza?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
+        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 22px; max-width:46ch; text-wrap:pretty;">No. Le pratiche sono pensate per chi non ne ha mai fatta una. Chi guida accompagna un'esplorazione, non insegna una forma da eseguire correttamente.</p>
+      </details>
+      <details style="background:#F5F0D8; border-radius:14px; padding:0 clamp(18px,4.5vw,26px);">
+        <summary style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0; min-height:44px; box-sizing:border-box; font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px); letter-spacing:-0.02em;">Posso venire da solə?<span class="sign" style="font-family:'JetBrains Mono',monospace; font-size:20px; color:#7D6074; flex-shrink:0;">+</span></summary>
+        <p style="font-family:'Poly',serif; font-size:clamp(15px,3.9vw,18px); line-height:1.6; color:#5f5b51; margin:0; padding:0 0 22px; max-width:46ch; text-wrap:pretty;">Sì. Molte persone arrivano da sole e le coppie si formano sul momento.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- =========================== 12. FOOTER =========================== -->
+  <footer style="background:#F5F0D8; padding:clamp(40px,8vw,72px) clamp(20px,5.5vw,56px) clamp(80px,14vw,72px); box-sizing:border-box; display:flex; flex-direction:column; gap:clamp(28px,5vw,40px);">
+    <div style="display:flex; flex-direction:column; gap:16px;">
       <img src="img/logo-oltre.png" alt="Oltre" style="width:min(78%,320px); height:auto; display:block;">
       <p style="font-family:'Poly',serif; font-style:italic; font-size:clamp(16px,4vw,20px); line-height:1.5; color:#6d685c; margin:0; max-width:34ch;">Festival itinerante e gratuito di pratiche di movimento, respiro e ascolto.</p>
     </div>
-    <div style="display:flex; flex-wrap:wrap; gap:12px;">
-      <a href="https://www.instagram.com/oltre_festival/" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border:1px solid #c9c0ac; border-radius:100px; padding:13px 20px; min-height:44px; box-sizing:border-box; display:flex; align-items:center;">Instagram</a>
-      <a href="mailto:oltre_festival@outlook.it" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border:1px solid #c9c0ac; border-radius:100px; padding:13px 20px; min-height:44px; box-sizing:border-box; display:flex; align-items:center;">oltre_festival@outlook.it</a>
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:clamp(21px,3.5vw,35px); border-top:1px solid #e2dac6; padding-top:clamp(21px,4.3vw,30px);">
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">Un progetto sostenuto da</span>
-        <img src="img/logo-100idee.png" alt="100 IDEE — Se non c'è, lo facciamo" style="width:min(72%,260px); height:auto; display:block;">
-      </div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">In collaborazione con</span>
-        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:clamp(20px,4vw,32px);">
-          <img src="img/logo-tempio.png" alt="Tempio del Futuro Perduto" style="width:min(48%,180px); height:auto; display:block;">
-        </div>
-      </div>
-    </div>
-    <p style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:clamp(13px,3.3vw,15px); line-height:1.6; color:#6d685c; margin:0; max-width:52ch; text-wrap:pretty;">100 IDEE è il programma del Comune di Milano – Direzione Giovani realizzato con cheFare, ICEI, Magma, Codici, Comunità Nuova, CDG Giambellino e Fondazione Aquilone.</p>
-    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#a29c8d;">© 2026 Oltre · Milano</span>
-  </footer>
 
+    <div style="display:flex; flex-wrap:wrap; gap:12px;">
+      <a id="instagram-footer" data-traccia="clic_instagram" href="https://www.instagram.com/oltre_festival/" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border:1px solid #c9c0ac; border-radius:100px; padding:13px 20px; min-height:44px; box-sizing:border-box; display:flex; align-items:center;" class="hv-bordo">Instagram</a>
+      <a href="mailto:oltre_festival@outlook.it" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; border:1px solid #c9c0ac; border-radius:100px; padding:13px 20px; min-height:44px; box-sizing:border-box; display:flex; align-items:center;" class="hv-bordo">oltre_festival@outlook.it</a>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:20px; border-top:1px solid #e2dac6; padding-top:clamp(24px,5vw,34px);">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">Un progetto sostenuto da</span>
+      <img src="img/logo-100idee.png" alt="100 IDEE — Se non c'è, lo facciamo" style="width:min(72%,300px); height:auto; display:block;">
+      <p style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:clamp(13px,3.3vw,15px); line-height:1.6; color:#6d685c; margin:0; max-width:52ch; text-wrap:pretty;">100 IDEE è il programma del Comune di Milano – Direzione Giovani realizzato con cheFare, ICEI, Magma, Codici, Comunità Nuova, CDG Giambellino e Fondazione Aquilone.</p>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:16px; border-top:1px solid #e2dac6; padding-top:clamp(24px,5vw,34px);">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#8a8578;">Dove siamo statə</span>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px;">
+        <span style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(15px,3.8vw,18px); letter-spacing:-0.01em; color:#3d3b34;">BASE Milano</span>
+        <img src="img/logo-tempio.png" alt="Tempio del Futuro Perduto" style="height:clamp(30px,7vw,42px); width:auto; display:block;">
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px; border-top:1px solid #e2dac6; padding-top:clamp(20px,4vw,28px);">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#a29c8d;">© 2026 Oltre · Milano</span>
+      <div style="display:flex; flex-wrap:wrap; gap:18px;">
+        <a href="privacy.html" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#8a8578;">Privacy</a>
+        <button data-cookie-preferenze style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#8a8578; background:transparent; border:none; padding:0; cursor:pointer;">Preferenze cookie</button>
+      </div>
+    </div>
+  </footer>
 </div>
-<script src="https://www.eventbrite.com/static/widgets/eb_widgets.js" async></script>
+
+<!-- ============================================================
+     BANNER DEI COOKIE
+     Resta nascosto finche' il codice qui sotto non decide di
+     mostrarlo. Accetta e Rifiuta hanno lo stesso peso visivo.
+     ============================================================ -->
+<div id="cookie-banner" hidden role="dialog" aria-live="polite" aria-label="Preferenze cookie">
+  <p style="font-family:'Satoshi Medium','Satoshi',sans-serif; font-weight:400; font-size:14px; line-height:1.55; margin:0; max-width:62ch; flex:1 1 300px;">Usiamo strumenti di misurazione (Meta e Google Analytics) per capire come viene usato il sito. Partono solo se li accetti. <a href="privacy.html" style="color:#CBC7DA; text-decoration:underline;">Informativa privacy</a></p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button data-cookie-rifiuta style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:14px; color:#F5F0D8; background:transparent; border:1px solid #F5F0D8; border-radius:100px; padding:12px 22px; min-height:44px; cursor:pointer;" class="hv-carta">Rifiuta</button>
+    <button data-cookie-accetta style="font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:14px; color:#F5F0D8; background:transparent; border:1px solid #F5F0D8; border-radius:100px; padding:12px 22px; min-height:44px; cursor:pointer;" class="hv-carta">Accetta</button>
+  </div>
+</div>
+
 <script>
 (function () {
-  var cfg     = window.OLTRE_CONFIG || {};
-  var pixelOn = !!String(cfg.metaPixelId || '').trim();
-  var gaOn    = !!String(cfg.googleAnalyticsId || '').trim();
+  'use strict';
+  var cfg = window.OLTRE_CONFIG || {};
+  function testo(v) { return String(v == null ? '' : v).trim(); }
 
-  var BASE_URL = 'https://www.eventbrite.it/e/';
+  /* =========================================================
+     1. CONSENSO E TRACCIAMENTO
+     Pixel e Analytics si caricano SOLO dopo "Accetta".
+     La scelta viene ricordata nel browser di chi visita.
+     ========================================================= */
+  var CHIAVE = 'oltre-cookie';
+  var caricato = false;
 
-  // Le due parti della giornata. Ogni bottone dice a quale appartiene
-  // con l'attributo data-evento; i bottoni senza quell'attributo sono
-  // semplici ancore che portano alla sezione delle iscrizioni.
-  var EVENTI = {
-    mattina:    { id: String(cfg.eventoIdMattina    || '').trim(), blocco: 'mattina-3-ottobre' },
-    pomeriggio: { id: String(cfg.eventoIdPomeriggio || '').trim(), blocco: 'pomeriggio-3-ottobre' }
-  };
-  var BLOCCO_ANCORA = 'giornata-3-ottobre';
-
-  var bottoni = document.querySelectorAll('[data-iscriviti]');
-
-  // Invio di un evento a Google Analytics. Se GA non c'e', non fa nulla.
-  function tracciaGA(nome, blocco, posizione) {
-    if (!gaOn || typeof window.gtag !== 'function') return;
-    window.gtag('event', nome, { workshop: blocco, posizione: posizione });
+  function ricorda(valore) {
+    try { localStorage.setItem(CHIAVE, valore); } catch (e) { /* navigazione privata */ }
+  }
+  function ricordato() {
+    try { return localStorage.getItem(CHIAVE); } catch (e) { return null; }
   }
 
-  function tracciaMeta(nome, blocco, posizione) {
-    if (!pixelOn || typeof window.fbq !== 'function') return;
-    window.fbq('trackCustom', nome, { blocco: blocco, posizione: posizione });
+  function caricaMeta() {
+    var id = testo(cfg.metaPixelId);
+    if (!id || window.fbq) return;
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', id);
+    window.fbq('track', 'PageView');
   }
 
-  // --- 1. Il costo del pranzo, se e' stato indicato --------------------------
-  var costo = String(cfg.costoPranzo || '').trim();
-  if (costo) {
-    var slot = document.querySelector('[data-costo-pranzo]');
-    if (slot) {
-      slot.appendChild(document.createTextNode(', '));
-      var ev = document.createElement('span');
-      ev.setAttribute('style', "font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:#7D6074;");
-      ev.textContent = costo;
-      slot.appendChild(ev);
-    }
+  function caricaAnalytics() {
+    var id = testo(cfg.googleAnalyticsId);
+    if (!id || window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', id);
+    var t = document.createElement('script');
+    t.async = true;
+    t.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(t);
   }
 
-  // --- 2. href di sicurezza: se lo script Eventbrite non parte, il link
-  //        porta comunque alla pagina dell'evento -----------------------------
-  for (var i = 0; i < bottoni.length; i++) {
-    var b = bottoni[i];
-    var e = EVENTI[b.getAttribute('data-evento')];
-    if (e && e.id) {
-      b.setAttribute('href', BASE_URL + encodeURIComponent(e.id));
-      b.setAttribute('rel', 'noopener');
-    }
-    // Senza data-evento, o con il codice ancora vuoto, il bottone resta
-    // l'ancora a #iscriviti scritta nella pagina: nessun errore.
+  function caricaTracciamento() {
+    if (caricato) return;
+    caricato = true;
+    caricaMeta();
+    caricaAnalytics();
   }
 
-  // Bottoni per cui il widget modale e' stato agganciato davvero.
-  var conModale = {};
+  // Un evento viene mandato a entrambi gli strumenti, se ci sono.
+  function traccia(nome, posizione) {
+    if (window.gtag) window.gtag('event', nome, { posizione: posizione });
+    if (window.fbq)  window.fbq('trackCustom', nome, { posizione: posizione });
+  }
 
-  // Punto della pagina in cui si stava leggendo quando si e' premuto il tasto.
-  var posizioneSalvata = null;
+  var banner = document.getElementById('cookie-banner');
+  function mostraBanner(sempre) {
+    if (!banner) return;
+    if (sempre || !ricordato()) banner.hidden = false;
+  }
+  function chiudiBanner() { if (banner) banner.hidden = true; }
 
-  // --- 3. Tracciamento + blocco della navigazione quando il modale c'e' ------
-  for (var j = 0; j < bottoni.length; j++) {
-    (function (btn) {
-      var id     = btn.id || 'senza-id';
-      var parte  = btn.getAttribute('data-evento');
-      var blocco = EVENTI[parte] ? EVENTI[parte].blocco : BLOCCO_ANCORA;
+  var bAcc = document.querySelector('[data-cookie-accetta]');
+  var bRif = document.querySelector('[data-cookie-rifiuta]');
+  var bPref = document.querySelector('[data-cookie-preferenze]');
+  if (bAcc) bAcc.addEventListener('click', function () { ricorda('si'); chiudiBanner(); caricaTracciamento(); });
+  if (bRif) bRif.addEventListener('click', function () { ricorda('no'); chiudiBanner(); });
+  if (bPref) bPref.addEventListener('click', function () { mostraBanner(true); });
 
-      btn.addEventListener('click', function (e) {
-        posizioneSalvata = window.scrollY;
+  if (ricordato() === 'si') caricaTracciamento();
+  else mostraBanner(false);
 
-        tracciaMeta('IntenzioneIscrizione', blocco, id);
-        tracciaGA('inizio_iscrizione', blocco, id);
-
-        // Se il modale e' agganciato, si annulla il salto all'href:
-        // altrimenti la pagina navigherebbe via mentre si apre la finestra.
-        if (conModale[id]) e.preventDefault();
+  // Bottoni con un evento fisso (Instagram, contatto spazi)
+  var conTraccia = document.querySelectorAll('[data-traccia]');
+  for (var i = 0; i < conTraccia.length; i++) {
+    (function (el) {
+      el.addEventListener('click', function () {
+        traccia(el.getAttribute('data-traccia'), el.id || 'senza-id');
       });
-    })(bottoni[j]);
+    })(conTraccia[i]);
   }
 
-  // --- 3b. Non perdere il punto di lettura quando si apre la finestra --------
-  // Aprendo il checkout, Eventbrite blocca lo scorrimento scrivendo
-  // overflow:hidden sul body. In diversi browser quel blocco fa risalire
-  // la pagina in cima, cosi' chiudendo la finestra ci si ritrova
-  // all'inizio invece che sul punto che si stava guardando.
-  (function () {
-    function tornaAlPunto() {
-      if (posizioneSalvata === null) return;
-      if (Math.abs(window.scrollY - posizioneSalvata) < 3) return;  // non si e' mosso
-      try {
-        window.scrollTo({ top: posizioneSalvata, behavior: 'instant' });
-      } catch (err) {
-        window.scrollTo(0, posizioneSalvata);   // browser piu' vecchi
-      }
-    }
+  /* =========================================================
+     2. LA PROSSIMA TAPPA, nei suoi tre stati
+     ========================================================= */
+  var tappa   = cfg.prossimaTappa || {};
+  var etich   = testo(tappa.etichetta);
+  var data    = testo(tappa.data);
+  var spazio  = testo(tappa.spazio);
+  var link    = testo(tappa.linkEventbrite);
+  var linkOrg = testo(cfg.linkEventbriteOrganizzatore);
 
-    if (typeof MutationObserver !== 'function') return;
+  // barra in alto
+  var inBarra = document.querySelector('[data-tappa-barra]');
+  if (inBarra && etich) { inBarra.textContent = etich; inBarra.hidden = false; }
 
-    var bloccato = false;
-    new MutationObserver(function () {
-      var oraBloccato = document.body.style.overflow === 'hidden';
+  // riquadro nella copertina
+  var quando = [data, spazio].filter(Boolean).join(' · ');
+  var heroBox = document.querySelector('[data-tappa-hero]');
+  var heroTxt = document.querySelector('[data-tappa-hero-testo]');
+  if (heroBox && heroTxt) {
+    heroTxt.textContent = quando || 'Novembre 2026 · data e spazio in arrivo';
+    heroBox.hidden = false;
+  }
 
-      if (oraBloccato && !bloccato) {
-        bloccato = true;
-        [0, 50, 100, 200, 350, 550, 800, 1100].forEach(function (ms) {
-          setTimeout(tornaAlPunto, ms);
-        });
-      } else if (!oraBloccato && bloccato) {
-        bloccato = false;             // finestra chiusa
-        tornaAlPunto();
-        posizioneSalvata = null;
-      }
-    }).observe(document.body, { attributes: true, attributeFilter: ['style'] });
-  })();
+  // riga nella linea del tempo
+  var tl = document.querySelector('[data-tappa-timeline]');
+  var tlTxt = document.querySelector('[data-tappa-timeline-testo]');
+  if (tl && tlTxt) { tlTxt.textContent = spazio || 'in arrivo'; tl.hidden = false; }
 
-  // --- 4. Aggancio del widget modale ----------------------------------------
-  function inizializza() {
-    for (var k = 0; k < bottoni.length; k++) {
-      var btn   = bottoni[k];
-      var id    = btn.id;
-      var parte = btn.getAttribute('data-evento');
-      var e     = EVENTI[parte];
-      if (!id || !e || !e.id) continue;   // ancora, o codice non ancora inserito
+  // sezione dedicata
+  var titolo   = document.querySelector('[data-tappa-titolo]');
+  var corpo    = document.querySelector('[data-tappa-testo]');
+  var bottoni  = document.querySelector('[data-tappa-bottoni]');
 
-      try {
-        window.EBWidgets.createWidget({
-          widgetType: 'checkout',
-          eventId: e.id,
-          modal: true,
-          modalTriggerElementId: id,
-          // colori del brand OLTRE, per non passare dal sito a una
-          // finestra di iscrizione che sembra di un altro progetto
-          themeSettings: {
-            brandColor: '#7D6074',
-            fontColor: '#2B2A26',
-            background: '#FFFFFF'
-          },
-          // Eventbrite chiama questa funzione quando l'iscrizione e'
-          // andata a buon fine dentro la finestra. E' l'unico modo di
-          // sapere che il giro si e' chiuso: il resto avviene su
-          // eventbrite.com, dove il nostro codice non arriva.
-          onOrderComplete: (function (blocco, posizione) {
-            return function () {
-              tracciaGA('iscrizione_completata', blocco, posizione);
-              tracciaMeta('IscrizioneCompletata', blocco, posizione);
-            };
-          })(e.blocco, id)
-        });
-        conModale[id] = true;
-      } catch (err) {
-        // Se il widget non si aggancia, il link resta valido: non si blocca nulla.
-        conModale[id] = false;
-      }
+  function bottone(testoBtn, href, id, evento, primario) {
+    var a = document.createElement('a');
+    a.id = id;
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = testoBtn;
+    a.className = primario ? 'hv-carta' : 'hv-carta';
+    a.setAttribute('style',
+      "font-family:'Satoshi Bold','Satoshi',sans-serif; font-weight:400; font-size:clamp(16px,4vw,19px);" +
+      (primario
+        ? ' background:#F5F0D8; color:#2B2A26; border:1px solid #F5F0D8;'
+        : ' background:transparent; color:#F5F0D8; border:1px solid #e0d3dc;') +
+      ' padding:17px 26px; border-radius:100px; min-height:56px; box-sizing:border-box;' +
+      ' display:inline-flex; align-items:center; justify-content:center;');
+    a.addEventListener('click', function () { traccia(evento, id); });
+    return a;
+  }
+
+  if (titolo && corpo && bottoni) {
+    if (link) {
+      // STATO C — le iscrizioni sono aperte
+      if (quando) titolo.textContent = quando;
+      corpo.textContent = 'Le iscrizioni sono aperte. I posti sono limitati.';
+      bottoni.appendChild(bottone('Iscriviti', link, 'iscrizione-prossima-tappa', 'iscrizione_prossima_tappa', true));
+      bottoni.appendChild(bottone('Segui Oltre su Instagram', 'https://www.instagram.com/oltre_festival/', 'instagram-tappa', 'clic_instagram', false));
+    } else if (data || spazio) {
+      // STATO B — data nota, iscrizioni non ancora aperte
+      titolo.textContent = quando;
+      corpo.textContent = 'Iscrizioni in apertura. Le annunciamo prima su Instagram.';
+      bottoni.appendChild(bottone('Segui Oltre su Instagram', 'https://www.instagram.com/oltre_festival/', 'instagram-tappa', 'clic_instagram', true));
+      if (linkOrg) bottoni.appendChild(bottone('Segui su Eventbrite', linkOrg, 'segui-eventbrite', 'segui_eventbrite', false));
+    } else {
+      // STATO A — ancora da annunciare
+      corpo.textContent = 'Novembre 2026. Data e spazio in arrivo: li annunciamo prima su Instagram.';
+      bottoni.appendChild(bottone('Segui Oltre su Instagram', 'https://www.instagram.com/oltre_festival/', 'instagram-tappa', 'clic_instagram', true));
+      if (linkOrg) bottoni.appendChild(bottone('Segui su Eventbrite', linkOrg, 'segui-eventbrite', 'segui_eventbrite', false));
     }
   }
 
-  // Se nessuno dei due codici e' stato inserito non serve attendere Eventbrite.
-  if (!EVENTI.mattina.id && !EVENTI.pomeriggio.id) return;
+  /* =========================================================
+     3. GALLERIA
+     Base: scorrimento CSS con aggancio. Qui si aggiungono
+     frecce, conteggio, tastiera e avanzamento automatico.
+     ========================================================= */
+  var foto = Array.isArray(cfg.galleria) ? cfg.galleria.filter(function (f) {
+    return f && testo(f.file);
+  }) : [];
 
-  // Lo script Eventbrite e' async: si attende che EBWidgets esista.
-  var tentativi = 0;
-  (function attendi() {
-    if (window.EBWidgets && typeof window.EBWidgets.createWidget === 'function') {
-      inizializza();
-      return;
+  var sezione = document.querySelector('[data-galleria]');
+  var pista   = document.querySelector('[data-gal-pista]');
+
+  if (sezione && pista && foto.length) {
+    sezione.hidden = false;
+
+    foto.forEach(function (f, n) {
+      var base = 'img/galleria/' + testo(f.file);
+      var wrap = document.createElement('div');
+      wrap.className = 'gal-foto';
+      var img = document.createElement('img');
+      img.src = base + '-1600.webp';
+      img.srcset = base + '-800.webp 800w, ' + base + '-1600.webp 1600w';
+      img.sizes = '100vw';
+      img.alt = testo(f.alt);
+      img.decoding = 'async';
+      if (n > 0) img.loading = 'lazy';       // la prima si carica subito
+      wrap.appendChild(img);
+      pista.appendChild(wrap);
+    });
+
+    var prec = document.querySelector('[data-gal-prec]');
+    var succ = document.querySelector('[data-gal-succ]');
+    var cont = document.querySelector('[data-gal-conteggio]');
+    var did  = document.querySelector('[data-gal-didascalia]');
+    var corrente = 0;
+    var giaTracciato = false;
+
+    function dueCifre(n) { return (n < 10 ? '0' : '') + n; }
+
+    function aggiorna() {
+      var largh = pista.clientWidth || 1;
+      corrente = Math.round(pista.scrollLeft / largh);
+      if (corrente < 0) corrente = 0;
+      if (corrente > foto.length - 1) corrente = foto.length - 1;
+      if (cont) cont.textContent = dueCifre(corrente + 1) + ' / ' + dueCifre(foto.length);
+      if (did) did.textContent = testo(foto[corrente].didascalia);
+      if (prec) prec.disabled = (corrente === 0);
+      if (succ) succ.disabled = (corrente === foto.length - 1);
     }
-    if (++tentativi > 100) return;   // ~10s: si rinuncia, restano i link normali
-    setTimeout(attendi, 100);
-  })();
+
+    function vai(n) {
+      if (n < 0) n = 0;
+      if (n > foto.length - 1) n = foto.length - 1;
+      pista.scrollTo({ left: n * pista.clientWidth, behavior: 'smooth' });
+    }
+
+    // una sola volta per sessione, come da specifica
+    function tracciaScorrimento() {
+      if (giaTracciato) return;
+      giaTracciato = true;
+      traccia('galleria_scorri', 'galleria');
+    }
+
+    var attesa = null;
+    pista.addEventListener('scroll', function () {
+      if (attesa) clearTimeout(attesa);
+      attesa = setTimeout(aggiorna, 90);
+    }, { passive: true });
+
+    if (prec) prec.addEventListener('click', function () { fermaAuto(); tracciaScorrimento(); vai(corrente - 1); });
+    if (succ) succ.addEventListener('click', function () { fermaAuto(); tracciaScorrimento(); vai(corrente + 1); });
+
+    pista.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); fermaAuto(); tracciaScorrimento(); vai(corrente + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); fermaAuto(); tracciaScorrimento(); vai(corrente - 1); }
+    });
+
+    pista.addEventListener('touchstart', function () { fermaAuto(); tracciaScorrimento(); }, { passive: true });
+    pista.addEventListener('mouseenter', fermaAuto);
+    pista.addEventListener('focusin', fermaAuto);
+
+    // avanzamento automatico: solo se chi guarda non ha chiesto
+    // di ridurre le animazioni. Si ferma al primo gesto e non riparte.
+    var auto = null;
+    function fermaAuto() {
+      if (auto) { clearInterval(auto); auto = null; }
+    }
+    var riduci = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!riduci && foto.length > 1) {
+      auto = setInterval(function () {
+        vai(corrente >= foto.length - 1 ? 0 : corrente + 1);
+      }, 6000);
+    }
+
+    window.addEventListener('resize', aggiorna);
+    aggiorna();
+  }
 })();
 </script>
 </body>
